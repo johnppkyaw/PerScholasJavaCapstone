@@ -3,9 +3,11 @@ package dev.johnkyaw.medmx.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
+@Table(name = "patient")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -13,8 +15,9 @@ import java.util.Set;
 @ToString
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int patId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "patient_seq")
+    @SequenceGenerator(name = "patient_seq", sequenceName = "patient_sequence", allocationSize = 1)
+    private long id;
 
     private String firstName;
 
@@ -26,14 +29,12 @@ public class Patient {
 
     private String address;
 
-    private String city;
+    private String address2;
 
-    private String state;
+    @ManyToOne
+    @JoinColumn(name = "physician_id")
+    private Physician primaryPhysician;
 
-    private int zipCode;
-
-    private int primaryPhysician;
-
-    @ManyToMany
-    private Set<Physician> specialists;
+    @OneToMany(mappedBy = "patient")
+    private List<Schedule> schedules;
 }

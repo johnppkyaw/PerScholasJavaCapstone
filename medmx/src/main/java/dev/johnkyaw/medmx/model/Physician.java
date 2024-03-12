@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "physician")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -14,15 +16,13 @@ import java.util.Set;
 @ToString
 public class Physician {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int physId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "physician_seq")
+    @SequenceGenerator(name = "physician_seq", sequenceName = "physician_sequence", allocationSize = 1)
+    private int id;
 
     private String firstName;
 
     private String lastName;
-
-    //MD, DO
-    private String title;
 
     private String specialty;
 
@@ -30,6 +30,11 @@ public class Physician {
 
     private String clinicAddress;
 
-    @ManyToMany
+    private String clinicAddress2;
+
+    @OneToMany(mappedBy = "physician", cascade = CascadeType.DETACH)
     private Set<Patient> patients = new HashSet<>();
+
+    @OneToMany(mappedBy = "physician")
+    private List<Schedule> schedules;
 }
