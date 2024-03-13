@@ -3,6 +3,8 @@ package dev.johnkyaw.medmx.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Entity
@@ -23,7 +25,8 @@ public class Patient {
 
     private String lastName;
 
-    private int age;
+    //Date class from java.util is outdated
+    private LocalDate dateOfBirth;
 
     private String gender;
 
@@ -31,10 +34,17 @@ public class Patient {
 
     private String address2;
 
+    private String phone;
+
     @ManyToOne
     @JoinColumn(name = "physician_id")
-    private Physician primaryPhysician;
+    private Physician physician;
 
     @OneToMany(mappedBy = "patient")
     private List<Schedule> schedules;
+
+    public int calculateAge(LocalDate dob) {
+        LocalDate currentDate = LocalDate.now();
+        return Period.between(dob, currentDate).getYears();
+    }
 }

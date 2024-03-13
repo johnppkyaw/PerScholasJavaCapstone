@@ -3,7 +3,8 @@ package dev.johnkyaw.medmx.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -15,10 +16,13 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "schedule_seq")
     @SequenceGenerator(name = "schedule_seq", sequenceName = "schedule_sequence", allocationSize = 1)
-    private int id;
+    private long id;
 
-    @Column(name = "date", nullable = false)
-    private LocalDateTime date;
+    @Column(nullable = false)
+    private LocalDate date;
+
+    @Column(nullable = false)
+    private LocalTime time;
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
@@ -28,9 +32,7 @@ public class Schedule {
     @JoinColumn(name = "physician_id", nullable = false)
     private Physician physician;
 
-    @Column(name = "status")
     private String status;
 
-    @Column(name = "notes", columnDefinition = "TEXT")
     private String notes;
 }

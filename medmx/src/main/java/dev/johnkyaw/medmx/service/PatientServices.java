@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class PatientServices {
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
     @Autowired
     public PatientServices(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
@@ -37,8 +37,12 @@ public class PatientServices {
             _patient.setLastName(patient.getLastName());
             _patient.setAddress(patient.getAddress());
             _patient.setAddress2(patient.getAddress2());
-            _patient.setAge(patient.getAge());
+            _patient.setDateOfBirth(patient.getDateOfBirth());
             _patient.setGender(patient.getGender());
         }
+    }
+
+    public void deletePatient(long id) {
+        patientRepository.deleteById(id);
     }
 }
