@@ -3,6 +3,7 @@ package dev.johnkyaw.medmx.service;
 import dev.johnkyaw.medmx.model.Patient;
 import dev.johnkyaw.medmx.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,6 +20,10 @@ public class PatientServices {
 
     public List<Patient> getAllPatients() {
         return new ArrayList<>(patientRepository.findAll());
+    }
+
+    public List<Patient> getAllPatientsByPhysicianId(Long id) {
+        return new ArrayList<>(patientRepository.findByPhysicianId(id));
     }
 
     public Optional<Patient> getPatientById(Long id) {

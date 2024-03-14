@@ -1,5 +1,7 @@
 package dev.johnkyaw.medmx.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import dev.johnkyaw.medmx.CustomLocalTimeDeserializer;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +24,7 @@ public class Schedule {
     private LocalDate date;
 
     @Column(nullable = false)
+    @JsonDeserialize(using = CustomLocalTimeDeserializer.class)
     private LocalTime time;
 
     @ManyToOne
