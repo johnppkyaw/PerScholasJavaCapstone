@@ -77,7 +77,6 @@
             <label for="phone">Phone:</label>
             <input type="text" id="phone" name="phone">
 
-            <!-- Include other input fields for other patient details -->
             <button type="submit" id="updatePatient">Save Changes</button>
         </form>
     </div>
@@ -124,7 +123,7 @@
             .then(response => response.json())
             .then(patient => {
 
-                //prepopulate the field with target patient
+                //pre-populate the field with target patient
                 document.getElementById('firstName').value = patient.firstName;
                 document.getElementById('lastName').value = patient.lastName;
                 document.getElementById('dateOfBirth').value = patient.dateOfBirth;
@@ -135,11 +134,37 @@
 
                 // Show the modal
                 modal.style.display = 'block';
+                console.log(patient);
 
                 const updatePatientButton = document.getElementById('updatePatient');
-                updatePatientButton.onclick(updatePatient);
+                updatePatientButton.addEventListener('click',() => updatePatient(patientId));
             })
             .catch(error => console.error('Error fetching patient details:', error));
+    }
+    function updatePatient(patientId) {
+        const updatedPatient = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            dateOfBirth: document.getElementById('dateOfBirth').value,
+            gender: document.getElementById('gender').value,
+            address: document.getElementById('address').value,
+            address2: document.getElementById('address2').value,
+            phone: document.getElementById('phone').value
+        };
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedPatient)
+        };
+        fetch('/api/patients/'+patientId, requestOptions)
+            .then(response => {
+            if(response.ok) {
+                window.location.reload();
+            } else {
+                throw new Error('Failed to delete patient');
+            }
+        }).catch(error => console.error('Error deleting patient: ', error));
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -147,9 +172,9 @@
         modal.style.display = 'none';
     };
 
-    // When the user clicks anywhere outside of the modal, close it
+    // When the user clicks anywhere outside the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.style.display = 'none';
         }
     };
@@ -158,7 +183,7 @@
     function deletePatient(patientId) {
         if(confirm("Are you sure you want to remote this patient form the system?")) {
             fetch('/api/patients/'+ patientId, {
-                method: 'DELETE'
+                method: 'DELETE',
             }).then(response => {
                 if(response.ok) {
                     window.location.reload();

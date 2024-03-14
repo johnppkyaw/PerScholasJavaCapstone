@@ -44,6 +44,9 @@ public class PatientServices {
             _patient.setAddress2(patient.getAddress2());
             _patient.setDateOfBirth(patient.getDateOfBirth());
             _patient.setGender(patient.getGender());
+
+            // Save the updated patient to the database
+            patientRepository.save(_patient);
         }
     }
 
