@@ -22,6 +22,10 @@ public class ScheduleServices {
         scheduleRepository.save(schedule);
     }
 
+    public Optional<Schedule> getSchedule(Long id) {
+        return scheduleRepository.findById(id);
+    }
+
     public List<Schedule> getPhysicianSchedule(Long id, LocalDate date) {
         return scheduleRepository.getAllSchedulesByPhysicianAndDate(id, date);
     }
