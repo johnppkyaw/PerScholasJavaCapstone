@@ -18,10 +18,12 @@ public class Notes {
     @SequenceGenerator(name = "patient_seq", sequenceName = "patient_sequence", allocationSize = 1)
     private Long id;
 
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "physician_id", nullable = false)
     private Physician physician;
