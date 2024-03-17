@@ -34,6 +34,17 @@ public class PhysicianRestController {
     }
 
     @Transactional
+    @PostMapping("/physicians/{physicianId}/patients/{patientId}/assign")
+    public ResponseEntity<Void> assignPatientToPhysician(Long patientId, Long physicianId) {
+        try {
+            physicianServices.assignPatientFromPhysician(patientId, physicianId);
+            return ResponseEntity.ok("Patient assigned from physician successfully");
+        } catch(ResponseStatusException e) {
+            return ResponseEntity.status(e.getStatus()).body(e.getReason());
+        }
+    }
+
+    @Transactional
     @GetMapping("/physicians")
     public ResponseEntity<List<Physician>> getAllPhysicians() {
         return ResponseEntity.ok(physicianServices.getAllPhysician());
@@ -62,6 +73,16 @@ public class PhysicianRestController {
         } else {
             logger.warn("Attempted editing but the physician not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @Transactional
+    @DeleteMapping("/physicians/{physicianId}/patients/{patientId}/assign")
+    public ResponseEntity<Void> assignPatientToPhysician(Long patientId, Long physicianId) {
+        try {
+            physicianServices.unassignPatientFromPhysician(patientId, physicianId);
+            return ResponseEntity.ok("Patient unassigned from physician successfully");
+        } catch(ResponseStatusException e) {
+            return ResponseEntity.status(e.getStatus()).body(e.getReason());
         }
     }
 
