@@ -17,7 +17,7 @@ public class PhysicianServices {
         this.physicianRepository = physicianRepository;
     }
 
-    public void createPhysician(Physician physician) {
+    public void addPhysician(Physician physician) {
         physicianRepository.save(physician);
     }
 
@@ -27,6 +27,31 @@ public class PhysicianServices {
 
     public Optional<Physician> getPhysicianById(long id) {
         return physicianRepository.findById(id);
+    }
+
+    public void updatePhysician(Long id, Physician physician) {
+        Optional<Physician> physicianData = physicianRepository.findById(id);
+        if(physicianData.isPresent()) {
+            Physician _physician = physicianData.get();
+            _physician.setFirstName(physician.getFirstName());
+            _physician.setLastName(physician.getLastName());
+            _physician.setSpecialty(physician.getSpecialty());
+            _physician.setClinicName(physician.getClinicName());
+            _physician.setClinicAddress(physician.getClinicAddress());
+            _physician.setClinicAddress2(physician.getClinicAddress2());
+            _physician.setPhone(physician.getPhone());
+
+            // Save the updated physician to the database
+            physicianRepository.save(_physician);
+        }
+    }
+
+    public void deletePhysician(long id) {
+        physicianRepository.deleteById(id);
+    }
+
+    public void deleteAllPhysician() {
+        physicianRepository.deleteAll();
     }
 
 

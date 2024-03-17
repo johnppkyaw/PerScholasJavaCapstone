@@ -4,56 +4,50 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "physician")
+@Table(name = "physician",
+        uniqueConstraints = { @UniqueConstraint(name = "UniqueNumberAndStatus", columnNames = {"first_name", "last_name", "specialty"})})
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @ToString
+@Getter
+@Setter
 public class Physician {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "physician_seq")
     @SequenceGenerator(name = "physician_seq", sequenceName = "physician_sequence", allocationSize = 1)
     private long id;
 
-    @Getter
-    @Setter
+    @NonNull
+    @Column(name = "first_name")
     private String firstName;
 
-    @Getter
-    @Setter
+    @NonNull
+    @Column(name = "last_name")
     private String lastName;
 
-    @Getter
-    @Setter
+    @NonNull
+    @Column(name = "specialty")
     private String specialty;
 
-    @Getter
-    @Setter
+    @NonNull
     private String clinicName;
 
-    @Getter
-    @Setter
+    @NonNull
     private String clinicAddress;
 
-    @Getter
-    @Setter
+    @NonNull
     private String clinicAddress2;
 
-    @Getter
-    @Setter
+    @NonNull
     private String phone;
 
-    @Getter
-    @Setter
     @OneToMany(mappedBy = "physician", cascade = CascadeType.DETACH)
     private List<Patient> patients = new ArrayList<>();
 
-    @Getter
-    @Setter
     @OneToMany(mappedBy = "physician")
     private List<Schedule> schedules = new ArrayList<>();
 }
