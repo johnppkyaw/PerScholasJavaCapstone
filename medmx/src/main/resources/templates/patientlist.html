@@ -91,6 +91,7 @@
             const patientTableBody = document.getElementById('patientTableBody');
             // Clear existing table rows
             patientTableBody.innerHTML = '';
+            console.log(data);
             // Populate table rows with patient data
             data.forEach(patient => {
                 const row = document.createElement('tr');

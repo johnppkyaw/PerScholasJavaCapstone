@@ -63,15 +63,15 @@ public class PhysicianServices {
         }
     }
 
-    public void unassignPatientFromPhysician(Long patientId, Long physicianId) {
+    public void assignPatientFromPhysician(Long physicianId, Long patientId) {
         Optional<Patient> patientData = patientRepository.findById(patientId);
-        Optional<Physician> physicianData = physicianRepository.findById(patientId);
+        Optional<Physician> physicianData = physicianRepository.findById(physicianId);
         if (patientData.isPresent() && physicianData.isPresent()) {
             Patient patient = patientData.get();
             Physician physician = physicianData.get();
 
-            patient.setPhysician(null);
-            physician.getPatients().remove(patient);
+            patient.setPhysician(physician);
+            physician.getPatients().add(patient);
 
             patientRepository.save(patient);
             physicianRepository.save(physician);
@@ -80,15 +80,15 @@ public class PhysicianServices {
         }
     }
 
-    public void assignPatientFromPhysician(Long patientId, Long physicianId) {
+    public void unassignPatientFromPhysician(Long physicianId, Long patientId) {
         Optional<Patient> patientData = patientRepository.findById(patientId);
-        Optional<Physician> physicianData = physicianRepository.findById(patientId);
+        Optional<Physician> physicianData = physicianRepository.findById(physicianId);
         if (patientData.isPresent() && physicianData.isPresent()) {
             Patient patient = patientData.get();
             Physician physician = physicianData.get();
 
-            patient.setPhysician(physician);
-            physician.getPatients().add(patient);
+            patient.setPhysician(null);
+            physician.getPatients().remove(patient);
 
             patientRepository.save(patient);
             physicianRepository.save(physician);
@@ -104,7 +104,4 @@ public class PhysicianServices {
     public void deleteAllPhysician() {
         physicianRepository.deleteAll();
     }
-
-
-
 }

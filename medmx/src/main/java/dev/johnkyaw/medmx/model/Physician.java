@@ -1,5 +1,6 @@
 package dev.johnkyaw.medmx.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -46,8 +47,46 @@ public class Physician {
     private String phone;
 
     @OneToMany(mappedBy = "physician", cascade = CascadeType.DETACH)
+    @JsonIgnore
     private List<Patient> patients = new ArrayList<>();
 
     @OneToMany(mappedBy = "physician")
+    @JsonIgnore
     private List<Schedule> schedules = new ArrayList<>();
 }
+//Physician sample
+//[
+//        {
+//        "firstName": "John",
+//        "lastName": "Smith",
+//        "specialty": "Cardiologist",
+//        "clinicName": "Cardio Clinic",
+//        "clinicAddress": "123 Main St",
+//        "clinicAddress2": "",
+//        "phone": "555-1111",
+//        "patients": null,
+//        "schedules": null
+//        },
+//        {
+//        "firstName": "Jane",
+//        "lastName": "Doe",
+//        "specialty": "Pediatrician",
+//        "clinicName": "Kids Clinic",
+//        "clinicAddress": "456 Elm St",
+//        "clinicAddress2": "Suite 101",
+//        "phone": "555-2222",
+//        "patients": null,
+//        "schedules": null
+//        },
+//        {
+//        "firstName": "Michael",
+//        "lastName": "Johnson",
+//        "specialty": "Dermatologist",
+//        "clinicName": "Skin Clinic",
+//        "clinicAddress": "789 Oak St",
+//        "clinicAddress2": "Suite 202",
+//        "phone": "555-3333",
+//        "patients": null,
+//        "schedules": null
+//        }
+//        ]

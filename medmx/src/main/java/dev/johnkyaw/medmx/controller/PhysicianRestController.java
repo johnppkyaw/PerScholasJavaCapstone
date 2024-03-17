@@ -9,8 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.lang.annotation.Repeatable;
+import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,12 +34,12 @@ public class PhysicianRestController {
 
     @Transactional
     @PostMapping("/physicians/{physicianId}/patients/{patientId}/assign")
-    public ResponseEntity<Void> assignPatientToPhysician(Long patientId, Long physicianId) {
+    public ResponseEntity<String> assignPatientToPhysician(@PathVariable("physicianId") long physicianId, @PathVariable("patientId") long patientId) {
         try {
-            physicianServices.assignPatientFromPhysician(patientId, physicianId);
+            physicianServices.assignPatientFromPhysician(physicianId, patientId);
             return ResponseEntity.ok("Patient assigned from physician successfully");
         } catch(ResponseStatusException e) {
-            return ResponseEntity.status(e.getStatus()).body(e.getReason());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -77,12 +76,12 @@ public class PhysicianRestController {
     }
     @Transactional
     @DeleteMapping("/physicians/{physicianId}/patients/{patientId}/assign")
-    public ResponseEntity<Void> assignPatientToPhysician(Long patientId, Long physicianId) {
+    public ResponseEntity<String> unassignPatientToPhysician(@PathVariable("physicianId") long physicianId, @PathVariable("patientId") long patientId) {
         try {
-            physicianServices.unassignPatientFromPhysician(patientId, physicianId);
+            physicianServices.unassignPatientFromPhysician(physicianId, patientId);
             return ResponseEntity.ok("Patient unassigned from physician successfully");
         } catch(ResponseStatusException e) {
-            return ResponseEntity.status(e.getStatus()).body(e.getReason());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
