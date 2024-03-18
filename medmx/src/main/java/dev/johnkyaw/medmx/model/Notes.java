@@ -27,4 +27,7 @@ public class Notes {
     @ManyToOne
     @JoinColumn(name = "physician_id", nullable = false)
     private Physician physician;
+
+    private String noteContent;
+    private String visitType;
 }

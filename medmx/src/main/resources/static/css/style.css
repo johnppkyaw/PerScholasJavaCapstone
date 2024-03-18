@@ -48,8 +48,26 @@ h2 {
   width: 300px;
 }
 
+#selectPatientContainer {
+  text-align: center; /* Center the content horizontally */
+}
+
 #patientTable {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
+
+.action-buttons{
+  color: white;
+  background-color: red;
+  border-radius: 25px;
+  border-color: red;
+  text-align: center;
+}
+
+.align-middle {
+  text-align: center;
+  vertical-align: middle;
+}
+

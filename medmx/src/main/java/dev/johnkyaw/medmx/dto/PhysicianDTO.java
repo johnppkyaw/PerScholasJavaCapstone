@@ -26,6 +26,8 @@ public class PhysicianDTO {
 
     @Pattern(regexp = "[A-Za-z]+$", message = "Only alphabetic allowed")
     private String lastName;
+    @NotEmpty(message="Required")
+    private String specialty;
 
     @NotEmpty(message = "Required")
     private String clinicName;

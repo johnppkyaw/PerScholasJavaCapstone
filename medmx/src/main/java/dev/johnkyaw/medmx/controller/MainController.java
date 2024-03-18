@@ -7,6 +7,8 @@ import dev.johnkyaw.medmx.service.PhysicianServices;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -94,13 +96,35 @@ public class MainController {
     }
 
     @GetMapping("/patientlist")
-    public String loadPatientListPage() {
+    public String loadPatientListPage(Model model) {
+
+        // Retrieve authentication object
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            Physician physician = physicianServices.findUserByUsername(username);
+
+            if(physician != null) {
+                model.addAttribute("physicianId", physician.getId());
+            }
+        }
         return "patientlist";
     }
     @GetMapping("/addpatient")
     public String loadCreatePatientPage(Model model) {
-        Patient patient = new Patient();
-        model.addAttribute("patient", patient);
+        // Retrieve authentication object
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            Physician physician = physicianServices.findUserByUsername(username);
+
+            if(physician != null) {
+                Patient patient = new Patient();
+                model.addAttribute("patient", patient);
+                model.addAttribute("physician", physician);
+
+            }
+        }
         return "createpatient";
     }
 
