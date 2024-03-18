@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration and Login System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">MedMX</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/addpatient}">Add Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/patientlist}">Patient list</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/schedule}">My Schedule</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br />
+
+<div class="container">
+    <div class="row">
+        <h1 class="text-center"> MedMX Patient Management System</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Registration</h2>
+            </div>
+            <div th:if="${param.success}">
+                <div class="alert alert-info">
+                    You have successfully registered our app!
+                </div>
+            </div>
+            <div class="card-body">
+                <form
+                        method="post"
+                        role="form"
+                        action="#"
+                        th:action="@{/register/save}"
+                        th:object="${physicianDTO}"
+                        id="physicianForm"
+                        enctype="utf8"
+                >
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="firstName">First Name</label>
+                        <input
+                                class="form-control"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Enter first name"
+                                th:field="*{firstName}"
+                                type="text"
+                        />
+                        <p th:errors = "*{firstName}" class="text-danger"
+                           th:if="${#fields.hasErrors('firstName')}"></p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="lastName">Last Name</label>
+                        <input
+                                class="form-control"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Enter last name"
+                                th:field="*{lastName}"
+                                type="text"
+                        />
+                        <p th:errors = "*{lastName}" class="text-danger"
+                           th:if="${#fields.hasErrors('lastName')}"></p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="username">Email (Username)</label>
+                        <input
+                                class="form-control"
+                                id="username"
+                                name="username"
+                                placeholder="Enter email address"
+                                th:field="*{username}"
+                                type="email"
+                        />
+                        <p th:errors = "*{username}" class="text-danger"
+                           th:if="${#fields.hasErrors('username')}"></p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="password">Password</label>
+                        <input
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                placeholder="Enter password"
+                                th:field="*{password}"
+                                type="password"
+                        />
+                        <p th:errors = "*{password}" class="text-danger"
+                           th:if="${#fields.hasErrors('password')}"></p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="matchingPassword">Confirm Password</label>
+                        <input
+                                class="form-control"
+                                id="matchingPassword"
+                                name="matchingPassword"
+                                placeholder="Repeat password"
+                                th:field="*{matchingPassword}"
+                                type="password"
+                        />
+                        <p th:errors = "*{matchingPassword}" class="text-danger"
+                           th:if="${#fields.hasErrors('matchingPassword')}"></p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="clinicName">Clinic Name</label>
+                        <input
+                                class="form-control"
+                                id="clinicName"
+                                name="clinicName"
+                                placeholder="Enter Clinic Name"
+                                th:field="*{clinicName}"
+                                type="text"
+                                value="Vinton"
+                        />
+                        <p th:errors = "*{clinicName}" class="text-danger"
+                           th:if="${#fields.hasErrors('clinicName')}"></p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="clinicAddress">Clinic Address</label>
+                        <input
+                                class="form-control"
+                                id="clinicAddress"
+                                name="clinicAddress"
+                                placeholder="Enter Street Number and Street Name and suite number"
+                                th:field="*{clinicAddress}"
+                                type="text"
+                                value="1 Main Street"
+                        />
+                        <p th:errors = "*{clinicAddress}" class="text-danger"
+                           th:if="${#fields.hasErrors('clinicAddress')}"></p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="clinicAddress2">Clinic Address 2</label>
+                        <input
+                                class="form-control"
+                                id="clinicAddress2"
+                                name="clinicAddress2"
+                                placeholder="Enter City and State"
+                                th:field="*{clinicAddress2}"
+                                type="text"
+                                value="Vinton, Iowa"
+                        />
+                        <p th:errors = "*{clinicAddress2}" class="text-danger"
+                           th:if="${#fields.hasErrors('clinicAddress2')}"></p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="phone">Phone</label>
+                        <input
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                                placeholder="Enter Phone"
+                                th:field="*{phone}"
+                                type="text"
+                        />
+                        <p th:errors = "*{phone}" class="text-danger"
+                           th:if="${#fields.hasErrors('phone')}"></p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Register</button>
+                        <span>Already registered? <a th:href="@{/login}">Login here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

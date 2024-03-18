@@ -1,42 +1,111 @@
 package dev.johnkyaw.medmx.service;
 
+import dev.johnkyaw.medmx.dto.PhysicianDTO;
 import dev.johnkyaw.medmx.model.Physician;
 import dev.johnkyaw.medmx.model.Patient;
+import dev.johnkyaw.medmx.model.PhysicianPrincipal;
+import dev.johnkyaw.medmx.model.Role;
 import dev.johnkyaw.medmx.repository.PhysicianRepository;
 import dev.johnkyaw.medmx.repository.PatientRepository;
+import dev.johnkyaw.medmx.repository.RoleRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.parameters.P;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import dev.johnkyaw.medmx.config.SecurityConfiguration;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class PhysicianServices {
+@Slf4j
+public class PhysicianServices implements PhysicianService {
     private final PhysicianRepository physicianRepository;
-    private final PatientRepository patientRepository;
+    private PatientRepository patientRepository;
+    private RoleServiceImpl roleService;
+    private RoleRepository roleRepository;
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public PhysicianServices(PhysicianRepository physicianRepository, PatientRepository patientRepository) {
+    public PhysicianServices(PhysicianRepository physicianRepository, PatientRepository patientRepository, RoleServiceImpl roleService, @Lazy BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+        super();
         this.physicianRepository = physicianRepository;
         this.patientRepository = patientRepository;
+        this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
     }
 
-    public void addPhysician(Physician physician) {
-        try {
-            Optional<Physician> existingPhysician = physicianRepository.findByFirstNameAndLastNameAndSpecialty(
-                    physician.getFirstName(), physician.getLastName(), physician.getSpecialty());
-            if(existingPhysician.isPresent()) {
-                throw new RuntimeException("The physician with provided info already exists");
-            } else {
-                physicianRepository.save(physician);
-            }
-        } catch(DataIntegrityViolationException e) {
-            throw new RuntimeException("Duplicate entry detected: " + e.getMessage());
+    public Physician findByIdAndFirstNameAndLastName(Long id, String firstName, String lastName) {
+        return physicianRepository.findByIdAndFirstNameAndLastName(id, firstName, lastName);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Physician physician = physicianRepository.findByUsername(username);
+        if(physician != null) {
+            return new PhysicianPrincipal(physician, roleService.getRolesByUser(physician.getId()));
+//            return new org.springframework.security.core.userdetails.User(physician.getUsername(),
+//                    physician.getPassword(),
+//                    physician.getRoles().stream()
+//                            .map((role) -> new SimpleGrantedAuthority(role.getName()))physician_sequence
+//                            .collect(Collectors.toList()));
+        }else {
+            log.warn("Invalid username or password {}", username);
+            throw new UsernameNotFoundException("Invalid email or password");
         }
     }
+
+    @Override
+    public void creat(PhysicianDTO physicianDTO) {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        Physician physician = modelMapper.map(physicianDTO, Physician.class);
+        physician.setPassword(passwordEncoder.encode(physician.getPassword()));
+
+        checkRoleExist();
+
+        if(physicianRepository.findAll().isEmpty()) {
+            physician.setRoles(Arrays.asList(roleService.findRoleByRoleName("ROLE_ADMIN")));
+        } else {
+            physician.setRoles(Arrays.asList(roleService.findRoleByRoleName("ROLE_PHYSICIAN")));
+        }
+        physicianRepository.save(physician);
+    }
+
+    @Override
+    public Physician findUserByUsername(String username) {
+        return physicianRepository.findByUsername(username);
+    }
+
+
+//    public void addPhysician(Physician physician) {
+//        try {
+//            Optional<Physician> existingPhysician = physicianRepository.findByFirstNameAndLastNameAndSpecialty(
+//                    physician.getFirstName(), physician.getLastName(), physician.getSpecialty());
+//            if(existingPhysician.isPresent()) {
+//                throw new RuntimeException("The physician with provided info already exists");
+//            } else {
+//                physicianRepository.save(physician);
+//            }
+//        } catch(DataIntegrityViolationException e) {
+//            throw new RuntimeException("Duplicate entry detected: " + e.getMessage());
+//        }
+//    }
 
     public List<Physician> getAllPhysician() {
         return physicianRepository.findAll();
@@ -57,9 +126,36 @@ public class PhysicianServices {
             _physician.setClinicAddress(physician.getClinicAddress());
             _physician.setClinicAddress2(physician.getClinicAddress2());
             _physician.setPhone(physician.getPhone());
-
+//            if(_physician.getPassword().isEmpty()) {
+//                _physician.setPassword(passwordEncoder.encode(physician.getPassword()));
+//                _physician.setUsername(physician.getUsername());
+//
+//                Role role1 = roleRepository.findByName("ROLE_ADMIN");
+//                Role role2 = roleRepository.findByName("ROLE_PHYSICIAN");
+//                if (role1 == null) {
+//                    checkRoleExist("ROLE_ADMIN");
+//                }
+//                if (role2 == null) {
+//                    role2 = checkRoleExist("ROLE_PHYSICIAN");
+//                }
+//
+//                _physician.setRoles(Arrays.asList(role2));
+//
+//            }
             // Save the updated physician to the database
             physicianRepository.save(_physician);
+        }
+    }
+
+    private void checkRoleExist() {
+        String[] roles = {"ROLE_ADMIN", "ROLE_PHYSICIAN", "ROLE_PATIENT"};
+        for(String roleName : roles) {
+            Role roleData = roleRepository.findByName(roleName);
+            if(roleData == null) {
+                Role role = new Role();
+                role.setName(roleName);
+                roleRepository.save(role);
+            }
         }
     }
 

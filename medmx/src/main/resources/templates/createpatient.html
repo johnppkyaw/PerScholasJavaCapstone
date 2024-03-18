@@ -24,10 +24,18 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/patientlist}">Patient list</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/schedule}">My Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+<!--th:action="@{/api/patients}"-->
+<!--th:object="${patient}"-->
 <h2>Add Patient</h2>
 <div class="container">
     <div class="row col-md-8 offset-md-2">
@@ -35,9 +43,9 @@
             <div class="card-body">
                 <form
                         id="patientform"
+                        action="api/patients"
                         method="post"
                         role="form"
-                        th:action="@{/api/patients}"
                         th:object="${patient}"
                 >
                     <div class="form-group mb-3">
@@ -125,7 +133,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Add Patient</button>
+                        <button id="add-patient-button" class="btn btn-primary" type="button" onclick="submitPatient()">Add Patient</button>
                     </div>
                 </form>
             </div>
@@ -134,5 +142,47 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+    function submitPatient() {
+        // Get form data
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const dateOfBirth = document.getElementById('dateOfBirth').value;
+        const gender = document.getElementById('gender').value;
+        const address = document.getElementById('address').value;
+        const address2 = document.getElementById('address2').value;
+
+        // Create patient object
+        const patient = {
+            firstName: firstName,
+            lastName: lastName,
+            dateOfBirth: dateOfBirth,
+            gender: gender,
+            address: address,
+            address2: address2
+        };
+
+        // Send patient data to server
+        fetch('/api/patients', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(patient)
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Patient added successfully!');
+                } else {
+                    alert('Failed to add patient');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while adding patient');
+            });
+    }
+
+</script>
 </body>
 </html>

@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,12 +27,13 @@ public class PhysicianRestController {
         this.physicianServices = physicianServices;
     }
 
-    @Transactional
-    @PostMapping("/physicians")
-    public ResponseEntity<Void> addPhysician(@RequestBody Physician physician) {
-        physicianServices.addPhysician(physician);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+
+//    @Transactional
+//    @PostMapping("/physicians")
+//    public ResponseEntity<Void> addPhysician(@RequestBody Physician physician) {
+//        physicianServices.addPhysician(physician);
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
     @Transactional
     @PostMapping("/physicians/{physicianId}/patients/{patientId}/assign")

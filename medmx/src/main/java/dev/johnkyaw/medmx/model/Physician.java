@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,15 @@ public class Physician {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "physician_seq")
     @SequenceGenerator(name = "physician_seq", sequenceName = "physician_sequence", allocationSize = 1)
     private long id;
+
+    private String username;
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "physician_roles",
+            joinColumns = @JoinColumn(name = "physician_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
 
     @NonNull
     @Column(name = "first_name")
