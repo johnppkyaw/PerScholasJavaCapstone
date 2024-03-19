@@ -42,6 +42,11 @@ public class PatientRestController {
     public ResponseEntity<Optional<Patient>> getPatientById(@PathVariable("id") long id) {
         return ResponseEntity.ok(patientServices.getPatientById(id));
     }
+    @Transactional
+    @GetMapping("/patients/byLastName")
+    public ResponseEntity<List<Patient>> getPatientByLastName(@RequestParam("lastName") String lastName) {
+        return ResponseEntity.ok(patientServices.getPatientsByLastName(lastName));
+    }
 
     @Transactional
     @PostMapping("/patients")

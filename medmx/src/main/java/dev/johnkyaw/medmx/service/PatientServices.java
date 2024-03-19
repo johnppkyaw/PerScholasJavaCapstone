@@ -30,6 +30,10 @@ public class PatientServices {
         return patientRepository.findById(id);
     }
 
+    public List<Patient> getPatientsByLastName(String string) {
+        return patientRepository.findByLastName(string);
+    }
+
     public void addPatient(Patient patient) {
         patientRepository.save(patient);
     }

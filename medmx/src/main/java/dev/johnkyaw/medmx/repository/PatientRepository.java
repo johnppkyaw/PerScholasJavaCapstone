@@ -10,4 +10,7 @@ import java.util.List;
 public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Query("SELECT p FROM Patient p WHERE p.physician.id = :physicianId")
     List<Patient> findByPhysicianId(@Param("physicianId") Long physicianId);
+
+    @Query("SELECT p FROM Patient p WHERE LOWER(p.lastName) LIKE LOWER(concat('%', :lastName, '%'))")
+    List<Patient> findByLastName(@Param("lastName") String lastName);
 }

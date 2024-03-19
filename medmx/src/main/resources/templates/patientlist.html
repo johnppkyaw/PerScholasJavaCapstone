@@ -43,7 +43,13 @@
             <option value="mine" selected>Show only my patients</option>
         </select>
     </label>
+    <label for="search-patient">
+        <input id="search-patient" name="search-patient" type="text">
+    </label>
+    <button type="button" id="search-patient-button">Search</button>
+
 </div>
+<br />
 
 <table id="patientTable">
     <thead>
@@ -137,11 +143,32 @@
                         <td class="align-middle">
                             <button class="patient-action-buttons" >View</button>
                             <button class="patient-action-buttons" onClick="openEditModal(${patient.id})">Edit</button>
-                            <button class="patient-action-buttons" onClick="deletePatient(${patient.id})">Delete</button></td>
+                            <button class="patient-action-buttons" id="patient-delete-button" onClick="deletePatient(${patient.id})">Delete</button></td>
                     `;
             patientTableBody.appendChild(row);
         });
     }
+    //Search function
+    const searchField = document.getElementById("search-patient");
+    const searchFieldButton = document.getElementById("search-patient-button");
+    const searchPatient = () => {
+        const searchString = parseInt(searchField.value);
+        let fetchURL = "";
+        //if it's number
+        if(!isNaN(searchString)) {
+            fetchURL = "/patients/"+searchString;
+        } else {
+            fetchURL = "/patients/byLastName?lastName="+searchString;
+        }
+    }
+    searchFieldButton.addEventListener("click", searchPatient)
+
+
+
+    //search by id
+        //check if it's number
+    //if not a number, search as a string
+
 
     // Get the edit modal
     const modal = document.getElementById('editPatientModal');

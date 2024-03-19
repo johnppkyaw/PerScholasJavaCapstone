@@ -35,7 +35,7 @@
 <!--th:object="${patient}"-->
 <h2>Add Patient</h2>
 <div class="container">
-    <div class="row col-md-8 offset-md-2">
+    <div class="row col-md-4 offset-md-4">
         <div class="card">
             <div class="card-body">
                 <form
@@ -128,21 +128,20 @@
                         <p th:errors = "*{address2}" class="text-danger"
                            th:if="${#fields.hasErrors('address2')}"></p>
                     </div>
-<!--                    <div class="form-group mb-3">-->
-<!--                        <label class="form-label" for="physicianId">PhysicianId</label>-->
-<!--                        <input-->
-<!--                                class="form-control"-->
-<!--                                id="physicianId"-->
-<!--                                name="physicianId"-->
-<!--                                th:value="*{physician.getId()}"-->
-<!--                                th:field="*{physician}"-->
-<!--                                type="text"-->
-<!--                                disabled-->
-<!--                        />-->
-<!--                        <p th:errors = "*{physician}" class="text-danger"-->
-<!--                           th:if="${#fields.hasErrors('physician')}"></p>-->
-<!--                    </div>-->
-
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="phone">Phone</label>
+                        <input
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                                placeholder="555-555-5555"
+                                th:field="*{phone}"
+                                type="tel"
+                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        />
+                        <p th:errors = "*{phone}" class="text-danger"
+                           th:if="${#fields.hasErrors('phone')}"></p>
+                    </div>
                     <div class="form-group">
                         <button id="add-patient-button" class="btn btn-primary" type="button" onclick="submitPatient()">Add Patient</button>
                     </div>
@@ -158,6 +157,7 @@
     var physician = /*[[${physician}]]*/ null;
     /*]]>*/
     function submitPatient() {
+
         // Get form data
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
@@ -165,6 +165,7 @@
         const gender = document.getElementById('gender').value;
         const address = document.getElementById('address').value;
         const address2 = document.getElementById('address2').value;
+        const phone = document.getElementById('phone').value;
 
         // Create patient object
         const patient = {
@@ -174,7 +175,8 @@
             gender: gender,
             address: address,
             address2: address2,
-            physician: physician
+            physician: physician,
+            phone: phone
         };
 
         // Send patient data to server
@@ -197,7 +199,6 @@
                 alert('An error occurred while adding patient');
             });
     }
-
 </script>
 </body>
 </html>

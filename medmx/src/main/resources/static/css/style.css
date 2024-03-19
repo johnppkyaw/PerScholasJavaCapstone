@@ -1,10 +1,31 @@
 body {
   height: 100vh;
+  background: rgb(152, 147, 227);
+  background: linear-gradient(177deg, rgba(20,17,61,1) 0%, rgb(130, 156, 238) 47%, rgba(137,145,176,1) 100%);
 }
 
 h2 {
   text-align: center;
   margin-top: 20px;
+  color: silver;
+}
+
+th {
+  padding: 15px 0px;
+  border-bottom: 5px solid black;
+  background-color: #94ffc6;
+  text-align: center;
+}
+
+td {
+  padding: 10px 0px;
+  background-color: #94ebff;
+  text-align: center;
+}
+
+table {
+  background-color: #94ebff;
+  border:solid black 1px;
 }
 
 #mainpic {
@@ -58,12 +79,18 @@ h2 {
     margin-right: auto;
 }
 
-.action-buttons{
-  color: white;
-  background-color: red;
+.patient-action-buttons{
   border-radius: 25px;
-  border-color: red;
+  border-color: #003cff;
   text-align: center;
+  background-color: #003cff;
+  color: white;
+}
+
+#patient-delete-button {
+  background-color: red;
+  border-color: red;
+
 }
 
 .align-middle {
