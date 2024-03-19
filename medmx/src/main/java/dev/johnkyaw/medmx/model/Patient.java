@@ -49,9 +49,6 @@ public class Patient {
     @JoinColumn(name = "physician_id")
     private Physician physician;
 
-    @OneToMany(mappedBy = "patient")
-    private List<Schedule> schedules = new ArrayList<>();
-
     public int calculateAge(LocalDate dob) {
         LocalDate currentDate = LocalDate.now();
         return Period.between(dob, currentDate).getYears();

@@ -3,6 +3,7 @@ package dev.johnkyaw.medmx.controller;
 import dev.johnkyaw.medmx.dto.PhysicianDTO;
 import dev.johnkyaw.medmx.model.Patient;
 import dev.johnkyaw.medmx.model.Physician;
+import dev.johnkyaw.medmx.service.PatientServices;
 import dev.johnkyaw.medmx.service.PhysicianServices;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -16,14 +17,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @Slf4j
 public class MainController {
     private PhysicianServices physicianServices;
+    private PatientServices patientServices;
 
     @Autowired
-    public MainController(PhysicianServices physicianServices) {
+    public MainController(PhysicianServices physicianServices, PatientServices patientServices) {
         this.physicianServices = physicianServices;
+        this.patientServices = patientServices;
     }
 
     @GetMapping("/")
@@ -127,5 +132,27 @@ public class MainController {
         }
         return "createpatient";
     }
+
+
+    @GetMapping("/schedule")
+    public String loadSchedulePage(Model model) {
+        // Retrieve authentication object
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            Physician physician = physicianServices.findUserByUsername(username);
+            if(physician != null) {
+                long physicianId = physician.getId();
+                model.addAttribute("physicianId", physicianId);
+
+                List<Patient> patients = patientServices.getAllPatientsByPhysicianId(physicianId);
+                model.addAttribute("patients", patients);
+            }
+
+        }
+        return "schedule";
+    }
+
+
 
 }

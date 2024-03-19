@@ -36,7 +36,8 @@ public class ScheduleServices {
         if(scheduleData.isPresent()) {
             Schedule _schedule = scheduleData.get();
             _schedule.setDate(schedule.getDate());
-            _schedule.setTime(schedule.getTime());
+            _schedule.setStartTime(schedule.getStartTime());
+            _schedule.setEndTime(schedule.getEndTime());
             _schedule.setStatus(schedule.getStatus());
             _schedule.setNotes(schedule.getNotes());
             scheduleRepository.save(_schedule);

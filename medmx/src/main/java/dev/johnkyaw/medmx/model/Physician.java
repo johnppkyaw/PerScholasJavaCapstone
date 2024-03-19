@@ -56,13 +56,13 @@ public class Physician {
     @NonNull
     private String phone;
 
-    @OneToMany(mappedBy = "physician", cascade = CascadeType.DETACH)
-    @JsonIgnore
-    private List<Patient> patients = new ArrayList<>();
-
-    @OneToMany(mappedBy = "physician")
-    @JsonIgnore
-    private List<Schedule> schedules = new ArrayList<>();
+//    @OneToMany(mappedBy = "physician", cascade = CascadeType.DETACH)
+//    @JsonIgnore
+//    private List<Patient> patients = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "physician")
+//    @JsonIgnore
+//    private List<Schedule> schedules = new ArrayList<>();
 }
 //Physician sample
 //[

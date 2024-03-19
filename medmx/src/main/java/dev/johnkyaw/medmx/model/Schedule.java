@@ -26,7 +26,10 @@ public class Schedule {
 
     @Column(nullable = false)
     @JsonDeserialize(using = CustomLocalTimeDeserializer.class)
-    private LocalTime time;
+    private LocalTime startTime;
+
+    @JsonDeserialize(using = CustomLocalTimeDeserializer.class)
+    private LocalTime endTime;
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)

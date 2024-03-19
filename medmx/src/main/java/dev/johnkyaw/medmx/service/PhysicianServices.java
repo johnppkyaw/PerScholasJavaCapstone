@@ -167,7 +167,6 @@ public class PhysicianServices implements PhysicianService {
             Physician physician = physicianData.get();
 
             patient.setPhysician(physician);
-            physician.getPatients().add(patient);
 
             patientRepository.save(patient);
             physicianRepository.save(physician);
@@ -184,7 +183,6 @@ public class PhysicianServices implements PhysicianService {
             Physician physician = physicianData.get();
 
             patient.setPhysician(null);
-            physician.getPatients().remove(patient);
 
             patientRepository.save(patient);
             physicianRepository.save(physician);
