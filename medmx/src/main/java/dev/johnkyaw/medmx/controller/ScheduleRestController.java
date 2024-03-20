@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,7 @@ public class ScheduleRestController {
     @Transactional(readOnly = true)
     @GetMapping("/physicians/{id}/schedules") //LocalDate: YYYY-MM-DD
     //fetch URL: "/physicians/{id}/schedules?date={date}"
-    public ResponseEntity<List<Schedule>> getAllSchedulesByPhysicianAndDate(@PathVariable("id") long id, @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public ResponseEntity<List<Schedule>> getAllSchedulesByPhysicianAndDate(@PathVariable("id") long id, @RequestParam("date") String date) {
         List<Schedule> schedules = scheduleServices.getPhysicianSchedule(id, date);
         return ResponseEntity.ok(schedules);
     }
@@ -46,7 +47,7 @@ public class ScheduleRestController {
 
     @Transactional
     @PutMapping("/schedules/{id}")
-    public ResponseEntity<Void> updatePatient(@PathVariable("id") long id, @RequestBody Schedule schedule) {
+    public ResponseEntity<Void> updateSchedule(@PathVariable("id") long id, @RequestBody Schedule schedule) {
         Optional<Schedule> scheduleData = scheduleServices.getSchedule(id);
         if(scheduleData.isPresent()) {
             scheduleServices.updateSchedule(id, schedule);
@@ -59,7 +60,7 @@ public class ScheduleRestController {
 
     @Transactional
     @DeleteMapping("/schedules/{id}")
-    public ResponseEntity<Void> deletePatient(@PathVariable("id") long id) {
+    public ResponseEntity<Void> deleteSchedule(@PathVariable("id") long id) {
         Optional<Schedule> scheduleData = scheduleServices.getSchedule(id);
         if(scheduleData.isPresent()) {
             scheduleServices.deleteSchedule(id);

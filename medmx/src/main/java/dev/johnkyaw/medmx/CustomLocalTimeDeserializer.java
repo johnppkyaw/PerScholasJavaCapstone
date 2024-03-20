@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class CustomLocalTimeDeserializer extends JsonDeserializer<LocalTime> {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm");
 
     @Override
     public LocalTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {

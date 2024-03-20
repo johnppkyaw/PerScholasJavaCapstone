@@ -143,7 +143,7 @@ public class MainController {
             Physician physician = physicianServices.findUserByUsername(username);
             if(physician != null) {
                 long physicianId = physician.getId();
-                model.addAttribute("physicianId", physicianId);
+                model.addAttribute("physician", physician);
 
                 List<Patient> patients = patientServices.getAllPatientsByPhysicianId(physicianId);
                 model.addAttribute("patients", patients);

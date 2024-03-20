@@ -10,6 +10,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
-    @Query("SELECT s FROM Schedule s WHERE s.physician.id = :physicianId AND DATE(s.date) = :searchDate")
-    List<Schedule> getAllSchedulesByPhysicianAndDate(@Param("physicianId") Long physicianId, @Param("searchDate") LocalDate searchDate);
+    @Query("SELECT s FROM Schedule s WHERE s.physician.id = :physicianId AND s.date = :searchDate")
+    List<Schedule> getAllSchedulesByPhysicianAndDate(@Param("physicianId") Long physicianId, @Param("searchDate") String searchDate);
 }

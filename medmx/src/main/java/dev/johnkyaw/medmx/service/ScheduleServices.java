@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,7 @@ public class ScheduleServices {
         return scheduleRepository.findById(id);
     }
 
-    public List<Schedule> getPhysicianSchedule(Long id, LocalDate date) {
+    public List<Schedule> getPhysicianSchedule(Long id, String date) {
         return scheduleRepository.getAllSchedulesByPhysicianAndDate(id, date);
     }
 
@@ -37,7 +38,6 @@ public class ScheduleServices {
             Schedule _schedule = scheduleData.get();
             _schedule.setDate(schedule.getDate());
             _schedule.setStartTime(schedule.getStartTime());
-            _schedule.setEndTime(schedule.getEndTime());
             _schedule.setStatus(schedule.getStatus());
             _schedule.setNotes(schedule.getNotes());
             scheduleRepository.save(_schedule);

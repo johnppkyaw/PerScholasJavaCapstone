@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "date", "time", "physician_id" }) })
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "date", "startTime", "physician_id" }) })
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "schedule_seq")
@@ -22,14 +22,14 @@ public class Schedule {
     private long id;
 
     @Column(nullable = false)
-    private LocalDate date;
+    private String date;
 
     @Column(nullable = false)
-    @JsonDeserialize(using = CustomLocalTimeDeserializer.class)
+//  @JsonDeserialize(using = CustomLocalTimeDeserializer.class)
     private LocalTime startTime;
 
-    @JsonDeserialize(using = CustomLocalTimeDeserializer.class)
-    private LocalTime endTime;
+//    @JsonDeserialize(using = CustomLocalTimeDeserializer.class)
+//    private LocalTime endTime;
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)

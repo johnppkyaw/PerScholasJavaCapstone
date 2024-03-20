@@ -41,7 +41,7 @@ table {
   object-fit: cover;
 }
 
-#editPatientModal, #add-schedule-modal {
+#editPatientModal, #add-schedule-modal, #edit-schedule-modal {
   position: fixed;
   top: 10%;
   left: 50%;
@@ -58,7 +58,7 @@ table {
   padding: 50px;
 
 }
-#editPatientForm, #add-schedule-form{
+#editPatientForm, #add-schedule-form, #edit-schedule-form{
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -76,23 +76,25 @@ table {
   width: 300px;
 }
 
-#selectPatientContainer, #dateContainer {
+#selectPatientContainer, #date-container {
   text-align: center; /* Center the content horizontally */
 }
 
-#patientTable, #scheduleContainer {
+#patientTable, #schedule-container {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
-#scheduleContainer {
+#schedule-container {
   display: flex;
   flex-direction: column;
+  max-height: 400px;
+  overflow-y:auto;
 }
 
-.eachSchedule {
-  height: 100px;
+.each-schedule {
+  /*height: 100px;*/
   display:flex;
   flex-direction: row;
   justify-content: space-around;
@@ -100,14 +102,15 @@ table {
   border: 5px black solid;
   border-radius: 10px;
   background-color: antiquewhite;
+  padding: 10px 0px;
 }
 
-#createSchedule {
+#create-schedule {
   background-color: unset;
   font-size: 36px;
   border: 5px black dashed;
 }
-#createSchedule:hover {
+#create-schedule:hover {
   cursor: pointer;
 }
 
