@@ -32,15 +32,24 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String loadHomePage() {
+    public String loadHomePage(Model model) {
+        // Retrieve authentication object
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            Physician physician = physicianServices.findUserByUsername(username);
+            if(physician != null) {
+                model.addAttribute("physician", physician);
+            }
+        }
         return "index";
     }
 
-    @GetMapping("/home")
-    public String loginSuccessHomePage() {
-        log.info("Login Success!");
-        return "index";
-    }
+//    @GetMapping("/home")
+//    public String loginSuccessHomePage() {
+//        log.info("Login Success!");
+//        return "index";
+//    }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {

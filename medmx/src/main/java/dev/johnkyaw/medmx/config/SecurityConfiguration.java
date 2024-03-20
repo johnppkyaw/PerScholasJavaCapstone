@@ -42,17 +42,17 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth ->
                         auth
                                 //permitAll() = request to these URLs are allowed without authentication
-                                .requestMatchers( "/login*",
-                                        "/css/*", "/js/*","/img/*", "/register", "register/save").permitAll()
+                                .requestMatchers( "/", "/css/home.css", "/login*"
+                                        ,"/img/*", "/register", "register/save").permitAll()
                                 //these URLs require authentication with any roles
-                                .requestMatchers("/home","/api/**")
+                                .requestMatchers("/home","/css/*","/js/*","/api/**")
                                 .hasAnyRole("ADMIN","PHYSICIAN").anyRequest().authenticated()
                 )
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/home")
+                                .defaultSuccessUrl("/schedule")
                                 .permitAll()
                 ).logout(
                         logout -> logout
