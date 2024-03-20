@@ -3,8 +3,7 @@ package dev.johnkyaw.medmx.controller;
 import dev.johnkyaw.medmx.model.Schedule;
 import dev.johnkyaw.medmx.service.ScheduleServices;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -16,10 +15,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Slf4j
 @RequestMapping("/api")
 public class ScheduleRestController {
     ScheduleServices scheduleServices;
-    private final Logger logger = LoggerFactory.getLogger(ScheduleRestController.class);
 
     @Autowired
     public ScheduleRestController(ScheduleServices scheduleServices) {
@@ -49,7 +48,7 @@ public class ScheduleRestController {
             scheduleServices.updateSchedule(id, schedule);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            logger.warn("Attempted editing but the schedule was not found!");
+            log.warn("Attempted editing but the schedule was not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -62,7 +61,7 @@ public class ScheduleRestController {
             scheduleServices.deleteSchedule(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            logger.warn("Attempted editing but the patient not found!");
+            log.warn("Attempted editing but the patient not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

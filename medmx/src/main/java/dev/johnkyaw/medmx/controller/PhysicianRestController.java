@@ -2,6 +2,7 @@ package dev.johnkyaw.medmx.controller;
 
 import dev.johnkyaw.medmx.model.Physician;
 import dev.johnkyaw.medmx.service.PhysicianServices;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Slf4j
 @RequestMapping("/api")
 public class PhysicianRestController {
     PhysicianServices physicianServices;
-
-    private final Logger logger = LoggerFactory.getLogger(PhysicianRestController.class);
 
     @Autowired
     public PhysicianRestController(PhysicianServices physicianServices) {
@@ -59,7 +59,7 @@ public class PhysicianRestController {
         if (physician.isPresent()) {
             return ResponseEntity.ok(physician);
         } else {
-            logger.warn("Physician with id " + id + " not found!");
+            log.warn("Physician with id " + id + " not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -73,7 +73,7 @@ public class PhysicianRestController {
             physicianServices.updatePhysician(id, physician);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            logger.warn("Attempted editing but the physician not found!");
+            log.warn("Attempted editing but the physician not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -96,7 +96,7 @@ public class PhysicianRestController {
             physicianServices.deletePhysician(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            logger.warn("Attempted editing but the patient not found!");
+            log.warn("Attempted editing but the patient not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

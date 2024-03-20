@@ -26,6 +26,7 @@ public class MainController {
 
     @Autowired
     public MainController(PhysicianServices physicianServices, PatientServices patientServices) {
+        log.info("injected physicianServices and patientServices to main controller");
         this.physicianServices = physicianServices;
         this.patientServices = patientServices;
     }

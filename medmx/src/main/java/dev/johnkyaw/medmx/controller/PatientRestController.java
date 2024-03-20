@@ -1,6 +1,7 @@
 package dev.johnkyaw.medmx.controller;
 
 import dev.johnkyaw.medmx.service.PatientServices;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Slf4j
 @RequestMapping("/api")
 public class PatientRestController {
     PatientServices patientServices;
-    private final Logger logger = LoggerFactory.getLogger(PatientRestController.class);
 
     @Autowired
     public PatientRestController(PatientServices patientServices) {
@@ -63,7 +64,7 @@ public class PatientRestController {
             patientServices.updatePatient(id, patient);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            logger.warn("Attempted editing but the patient not found!");
+            log.warn("Attempted editing but the patient not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -76,7 +77,7 @@ public class PatientRestController {
             patientServices.deletePatient(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            logger.warn("Attempted editing but the patient not found!");
+            log.warn("Attempted editing but the patient not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

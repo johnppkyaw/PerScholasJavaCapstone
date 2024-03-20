@@ -2,6 +2,7 @@ package dev.johnkyaw.medmx.controller;
 
 import dev.johnkyaw.medmx.model.Note;
 import dev.johnkyaw.medmx.service.NoteService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@Slf4j
 @RequestMapping("/api/notes")
 public class NoteRestController {
 
@@ -36,7 +38,7 @@ public class NoteRestController {
         if(note != null) {
             return new ResponseEntity<>(note, HttpStatus.OK);
         } else {
-            return note != null ?  : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @Transactional
