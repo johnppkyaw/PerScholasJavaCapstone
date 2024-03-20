@@ -40,9 +40,10 @@ public class ScheduleServices {
             _schedule.setStartTime(schedule.getStartTime());
             _schedule.setStatus(schedule.getStatus());
             _schedule.setNotes(schedule.getNotes());
+            _schedule.setPatient(schedule.getPatient());
+            _schedule.setPhysician(schedule.getPhysician());
             scheduleRepository.save(_schedule);
         }
-
     }
 
     public void deleteSchedule(Long id) {

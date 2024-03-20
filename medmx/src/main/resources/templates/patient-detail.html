@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"   xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MedMX Patient Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">MedMX</a>
+        <!--        Menu button appears when window is small-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/addpatient}">Add Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/patientlist}">Patient list</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/schedule}">My Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br /><br />
+
+<h2 th:text="${patient.firstName} + ' ' + ${patient.lastName}"></h2>
+<!--<div id="selectPatientContainer">-->
+<!--    <label for="selectPatient">-->
+<!--        <select id="selectPatient">-->
+<!--            <option value="all">Select All Patients</option>-->
+<!--            <option value="mine" selected>Show only my patients</option>-->
+<!--        </select>-->
+<!--    </label>-->
+<!--    <label for="search-patient">-->
+<!--        <input id="search-patient" name="search-patient" type="text">-->
+<!--    </label>-->
+<!--    <button type="button" id="search-patient-button">Search</button>-->
+<!--</div>-->
+<br />
+
+<table id="patientTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th class="align-middle">Actions</th>
+    </tr>
+    </thead>
+    <tbody id="patientTableBody">
+    <!-- Patient data will be populated here dynamically -->
+    </tbody>
+</table>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script th:inline="javascript">
+    const patient = [[${patient}]];
+</script>
+<script>
+    console.log(patient);
+    // const changePatientSelectOption = (e) => {
+    //     const currOption = e.target.value;
+    //     // Fetch patient data from the backend
+    //     let route = "";
+    //     if(currOption === "all") {
+    //         route = "/api/patients";
+    //     } else {
+    //         route = "api/physicians/"+physicianId+"/patients";
+    //     }
+    //     fetch(route)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             // Populate table rows patient data
+    //             loadPatient(data);
+    //         })
+    //         .catch(error => console.error('Error fetching patient data:', error));
+    // }
+    // const selectElement = document.getElementById("selectPatient");
+    // selectElement.addEventListener("change", changePatientSelectOption);
+    //
+    // //load physician's patient list by default
+    // changePatientSelectOption({target: selectElement});
+    //
+    //
+    // const loadPatient = (patientList) => {
+    //     const patientTableBody = document.getElementById('patientTableBody');
+    //     // Clear existing table rows
+    //     patientTableBody.innerHTML = '';
+    //     patientList.forEach(patient => {
+    //         const row = document.createElement('tr');
+    //         row.innerHTML = `
+    //                     <td>${patient.id}</td>
+    //                     <td>${patient.firstName}</td>
+    //                     <td>${patient.lastName}</td>
+    //                     <td>${patient.dateOfBirth}</td>
+    //                     <td>${patient.gender}</td>
+    //                     <td>${patient.phone}</td>
+    //                     <td class="align-middle">
+    //                         <button class="patient-action-buttons" th:href="@{/schedule/${patient.id}">View</button>
+    //                         <button class="patient-action-buttons" onClick="openEditModal(${patient.id})">Edit</button>
+    //                         <button class="patient-action-buttons" id="patient-delete-button" onClick="deletePatient(${patient.id})">Delete</button></td>
+    //                 `;
+    //         patientTableBody.appendChild(row);
+    //     });
+    // }
+    // //Search function
+    // const searchField = document.getElementById("search-patient");
+    // const searchFieldButton = document.getElementById("search-patient-button");
+    // const searchPatient = () => {
+    //     const searchString = parseInt(searchField.value);
+    //     let fetchURL = "";
+    //     //if it's number
+    //     if(!isNaN(searchString)) {
+    //         fetchURL = "/patients/"+searchString;
+    //     } else {
+    //         fetchURL = "/patients/byLastName?lastName="+searchString;
+    //     }
+    // }
+    // searchFieldButton.addEventListener("click", searchPatient)
+    //
+    //
+    //
+    // //search by id
+    // //check if it's number
+    // //if not a number, search as a string
+    //
+    //
+    // // Get the edit modal
+    // const modal = document.getElementById('editPatientModal');
+    //
+    // // Get the close button element that closes the modal
+    // const closeModal = document.getElementById('closeModal');
+    //
+    // // When the user clicks on the edit button, open the modal
+    // function openEditModal(patientId) {
+    //     // Fetch patient details by ID and pre-fill the form fields
+    //     fetch(`/api/patients/${patientId}`)
+    //         .then(response => response.json())
+    //         .then(patient => {
+    //             //pre-populate the field with target patient
+    //             document.getElementById('firstName').value = patient.firstName;
+    //             document.getElementById('lastName').value = patient.lastName;
+    //             document.getElementById('dateOfBirth').value = patient.dateOfBirth;
+    //             document.getElementById('gender').value = patient.gender;
+    //             document.getElementById('address').value = patient.address;
+    //             document.getElementById('address2').value = patient.address2;
+    //             document.getElementById('phone').value = patient.phone;
+    //
+    //             // Show the modal
+    //             modal.style.display = 'block';
+    //
+    //             const updatePatientButton = document.getElementById('updatePatient');
+    //             updatePatientButton.addEventListener('click',() => updatePatient(patientId));
+    //         })
+    //         .catch(error => console.error('Error fetching patient details:', error));
+    // }
+    // function updatePatient(patientId) {
+    //     console.log(document.getElementById('phone').value);
+    //     const updatedPatient = {
+    //         firstName: document.getElementById('firstName').value,
+    //         lastName: document.getElementById('lastName').value,
+    //         dateOfBirth: document.getElementById('dateOfBirth').value,
+    //         gender: document.getElementById('gender').value,
+    //         address: document.getElementById('address').value,
+    //         address2: document.getElementById('address2').value,
+    //         phone: document.getElementById('phone').value
+    //     };
+    //
+    //     const requestOptions = {
+    //         method: 'PUT',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify(updatedPatient)
+    //     };
+    //     fetch('/api/patients/'+patientId, requestOptions)
+    //         .then(response => {
+    //             if(response.ok) {
+    //                 window.location.reload();
+    //             } else {
+    //                 throw new Error('Failed to delete patient');
+    //             }
+    //         }).catch(error => console.error('Error deleting patient: ', error));
+    // }
+    //
+    // // When the user clicks on close button, close the modal
+    // closeModal.onclick = function() {
+    //     modal.style.display = 'none';
+    // };
+    //
+    // // When the user clicks anywhere outside the modal, close it
+    // window.onclick = function(event) {
+    //     if (event.target === modal) {
+    //         modal.style.display = 'none';
+    //     }
+    // };
+    //
+    // // Delete the patient
+    // function deletePatient(patientId) {
+    //     if(confirm("Are you sure you want to remove this patient from the system?")) {
+    //         fetch('/api/patients/'+ patientId, {
+    //             method: 'DELETE',
+    //         }).then(response => {
+    //             if(response.ok) {
+    //                 window.location.reload();
+    //             } else {
+    //                 throw new Error('Failed to delete patient');
+    //             }
+    //         }).catch(error => console.error('Error deleting patient: ', error));
+    //     }
+    // }
+</script>
+</body>
+</html>

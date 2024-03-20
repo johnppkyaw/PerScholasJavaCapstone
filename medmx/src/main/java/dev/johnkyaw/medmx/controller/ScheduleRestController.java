@@ -1,21 +1,17 @@
 package dev.johnkyaw.medmx.controller;
 
-import dev.johnkyaw.medmx.model.Patient;
 import dev.johnkyaw.medmx.model.Schedule;
 import dev.johnkyaw.medmx.service.ScheduleServices;
-import org.apache.coyote.Response;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
-import org.springframework.format.annotation.DateTimeFormat;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 

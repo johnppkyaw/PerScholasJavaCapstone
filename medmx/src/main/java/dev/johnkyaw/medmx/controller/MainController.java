@@ -13,11 +13,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @Slf4j
@@ -153,6 +152,18 @@ public class MainController {
         return "schedule";
     }
 
-
-
+    @GetMapping("/patientDetail/{id}")
+    public String loadPatientDetailPage(@PathVariable("id") long id, Model model) {
+        Optional<Patient> patientData = patientServices.getPatientById(id);
+        if(patientData.isPresent()){
+            log.info("Patient is present adding to model attribute");
+            Patient patient = patientData.get();
+            System.out.println(patient);
+            model.addAttribute("patient", patient);
+        } else {
+            log.warn("Patient not found!");
+        }
+        log.info("Directing to patient-detail html");
+        return "patient-detail";
+    }
 }

@@ -17,7 +17,7 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @ToString
-public class Notes {
+public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "patient_seq")
     @SequenceGenerator(name = "patient_seq", sequenceName = "patient_sequence", allocationSize = 1)

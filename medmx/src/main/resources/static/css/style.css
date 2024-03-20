@@ -80,7 +80,7 @@ table {
   text-align: center; /* Center the content horizontally */
 }
 
-#patientTable, #schedule-container {
+#patientTable, #schedule-container, #create-schedule {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
