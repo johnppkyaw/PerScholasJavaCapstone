@@ -1,0 +1,78 @@
+2024-03-20T18:19:40.105-07:00  INFO 4231 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 4231 (/Users/johnppkyaw/Desktop/PS/Capstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PS/Capstone/medmx)
+2024-03-20T18:19:40.106-07:00  INFO 4231 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-20T18:19:40.126-07:00  INFO 4231 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-20T18:19:40.126-07:00  INFO 4231 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-20T18:19:40.581-07:00  INFO 4231 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-20T18:19:40.611-07:00  INFO 4231 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 5 JPA repository interfaces.
+2024-03-20T18:19:40.999-07:00  INFO 4231 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-20T18:19:41.005-07:00  INFO 4231 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-20T18:19:41.006-07:00  INFO 4231 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-20T18:19:41.031-07:00  INFO 4231 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-20T18:19:41.032-07:00  INFO 4231 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 906 ms
+2024-03-20T18:19:41.120-07:00  WARN 4231 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [096756200B06530244CA9114397FBF9B]
+2024-03-20T18:19:41.190-07:00  INFO 4231 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-20T18:19:41.222-07:00  INFO 4231 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-20T18:19:41.239-07:00  INFO 4231 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-20T18:19:41.350-07:00  INFO 4231 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-20T18:19:41.364-07:00  INFO 4231 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-20T18:19:41.525-07:00  INFO 4231 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b47195
+2024-03-20T18:19:41.526-07:00  INFO 4231 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-20T18:19:41.565-07:00  WARN 4231 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-20T18:19:42.045-07:00  INFO 4231 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-20T18:19:42.128-07:00  INFO 4231 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-20T18:19:42.324-07:00  INFO 4231 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-20T18:19:42.594-07:00  INFO 4231 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
+2024-03-20T18:19:42.680-07:00  WARN 4231 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-20T18:19:42.746-07:00  INFO 4231 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-20T18:19:42.938-07:00  INFO 4231 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-20T18:19:42.981-07:00  INFO 4231 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@28df7185, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2c328c3c, org.springframework.security.web.context.SecurityContextHolderFilter@7816f554, org.springframework.security.web.header.HeaderWriterFilter@6cb379df, org.springframework.web.filter.CorsFilter@55dcbba3, org.springframework.security.web.authentication.logout.LogoutFilter@60fedc4b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@f27b8b1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@551d9c9e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30b6f70c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18691b80, org.springframework.security.web.access.ExceptionTranslationFilter@7bb2d7f4, org.springframework.security.web.access.intercept.AuthorizationFilter@63cbfe05]
+2024-03-20T18:19:43.219-07:00  INFO 4231 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-20T18:19:43.260-07:00  INFO 4231 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-20T18:19:43.269-07:00  INFO 4231 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 3.333 seconds (process running for 3.617)
+2024-03-20T18:19:43.393-07:00  INFO 4231 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-20T18:19:43.393-07:00  INFO 4231 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-20T18:19:43.394-07:00  INFO 4231 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-20T18:19:53.306-07:00  INFO 4231 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Loading home page
+2024-03-20T18:19:54.626-07:00  INFO 4231 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-20T18:21:22.422-07:00  INFO 4231 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-20T18:21:22.429-07:00  INFO 4231 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-20T18:21:22.434-07:00  INFO 4231 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-20T18:24:07.630-07:00  INFO 4329 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 4329 (/Users/johnppkyaw/Desktop/PS/Capstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PS/Capstone/medmx)
+2024-03-20T18:24:07.631-07:00  INFO 4329 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-20T18:24:07.656-07:00  INFO 4329 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-20T18:24:07.656-07:00  INFO 4329 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-20T18:24:08.116-07:00  INFO 4329 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-20T18:24:08.145-07:00  INFO 4329 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 5 JPA repository interfaces.
+2024-03-20T18:24:08.527-07:00  INFO 4329 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-20T18:24:08.533-07:00  INFO 4329 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-20T18:24:08.533-07:00  INFO 4329 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-20T18:24:08.558-07:00  INFO 4329 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-20T18:24:08.558-07:00  INFO 4329 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 902 ms
+2024-03-20T18:24:08.713-07:00  INFO 4329 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-20T18:24:08.743-07:00  INFO 4329 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-20T18:24:08.761-07:00  INFO 4329 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-20T18:24:08.869-07:00  INFO 4329 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-20T18:24:08.883-07:00  INFO 4329 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-20T18:24:09.044-07:00  INFO 4329 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f983009
+2024-03-20T18:24:09.045-07:00  INFO 4329 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-20T18:24:09.071-07:00  WARN 4329 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-20T18:24:09.543-07:00  INFO 4329 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-20T18:24:09.625-07:00  INFO 4329 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-20T18:24:09.822-07:00  INFO 4329 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-20T18:24:10.098-07:00  INFO 4329 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
+2024-03-20T18:24:10.188-07:00  WARN 4329 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-20T18:24:10.255-07:00  INFO 4329 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-20T18:24:10.444-07:00  INFO 4329 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-20T18:24:10.485-07:00  INFO 4329 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@204f4c17, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7aa39ec, org.springframework.security.web.context.SecurityContextHolderFilter@2f420b6b, org.springframework.security.web.header.HeaderWriterFilter@42cb918c, org.springframework.web.filter.CorsFilter@774422c0, org.springframework.security.web.authentication.logout.LogoutFilter@4a5ea63, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@206b3c5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a820c35, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@37bbf278, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@48870c90, org.springframework.security.web.access.ExceptionTranslationFilter@726d8d3b, org.springframework.security.web.access.intercept.AuthorizationFilter@7a95e287]
+2024-03-20T18:24:10.722-07:00  INFO 4329 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-20T18:24:10.758-07:00  INFO 4329 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-20T18:24:10.768-07:00  INFO 4329 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 3.312 seconds (process running for 3.615)
+2024-03-20T18:24:10.912-07:00  INFO 4329 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-20T18:24:10.912-07:00  INFO 4329 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-20T18:24:10.913-07:00  INFO 4329 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-20T18:24:15.870-07:00  INFO 4329 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-20T18:24:22.194-07:00  INFO 4329 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-20T18:24:22.199-07:00  INFO 4329 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-20T18:25:18.771-07:00  INFO 4329 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-20T18:25:18.780-07:00  INFO 4329 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-20T18:25:18.801-07:00  INFO 4329 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

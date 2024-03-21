@@ -4,6 +4,8 @@ import dev.johnkyaw.medmx.model.Schedule;
 import dev.johnkyaw.medmx.service.ScheduleServices;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,7 @@ import java.util.Optional;
 @Slf4j
 @RequestMapping("/api")
 public class ScheduleRestController {
+    Logger log = LoggerFactory.getLogger(ScheduleRestController.class);
     ScheduleServices scheduleServices;
 
     @Autowired

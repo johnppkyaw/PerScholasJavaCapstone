@@ -20,6 +20,7 @@ import java.util.Optional;
 @Slf4j
 @RequestMapping("/api")
 public class PhysicianRestController {
+    Logger log = LoggerFactory.getLogger(PhysicianRestController.class);
     PhysicianServices physicianServices;
 
     @Autowired

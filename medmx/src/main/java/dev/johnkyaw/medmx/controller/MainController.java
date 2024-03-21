@@ -7,6 +7,8 @@ import dev.johnkyaw.medmx.service.PatientServices;
 import dev.johnkyaw.medmx.service.PhysicianServices;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,8 +21,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@Slf4j
 public class MainController {
+    Logger log = LoggerFactory.getLogger(MainController.class);
     private PhysicianServices physicianServices;
     private PatientServices patientServices;
 
@@ -34,11 +36,13 @@ public class MainController {
     @GetMapping("/")
     public String loadHomePage(Model model) {
         // Retrieve authentication object
+        log.info("Loading home page");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();
             Physician physician = physicianServices.findUserByUsername(username);
             if(physician != null) {
+                log.info("A physician is logged in");
                 model.addAttribute("physician", physician);
             }
         }
@@ -53,6 +57,7 @@ public class MainController {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
+        log.info("Loaded registration page");
         // create a model object to store form data
         model.addAttribute("physicianDTO", new PhysicianDTO());
         return "register";
@@ -68,6 +73,7 @@ public class MainController {
             model.addAttribute("physicianDTO", physicianDTO);
             return "register";
         }
+        log.info("Registration successful");
         physicianServices.creat(physicianDTO);
         return "index";
 

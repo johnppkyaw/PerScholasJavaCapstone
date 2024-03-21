@@ -3,6 +3,8 @@ package dev.johnkyaw.medmx.controller;
 import dev.johnkyaw.medmx.model.Note;
 import dev.johnkyaw.medmx.service.NoteService;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,9 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Slf4j
 @RequestMapping("/api/notes")
 public class NoteRestController {
+    Logger log = LoggerFactory.getLogger(PatientRestController.class);
 
     private final NoteService noteService;
 
@@ -38,6 +40,7 @@ public class NoteRestController {
         if(note != null) {
             return new ResponseEntity<>(note, HttpStatus.OK);
         } else {
+            log.warn("Note not found.");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -52,6 +55,7 @@ public class NoteRestController {
     @PutMapping("/{id}")
     public ResponseEntity<Note> updateNote(@PathVariable Long id, @RequestBody Note note) {
         if (noteService.getNoteById(id) == null) {
+            log.warn("Could not edit the note since the note was not found.");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         note.setId(id);

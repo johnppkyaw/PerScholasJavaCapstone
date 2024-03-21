@@ -1,5 +1,9 @@
 body {
   height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: linear-gradient(177deg, rgba(20, 17, 61, 1) 0%, rgb(130, 156, 238) 47%, rgba(137, 145, 176, 1) 100%);
 }
 li:hover {
@@ -11,6 +15,8 @@ li:hover {
 }
 .navbar {
   padding: 0px 100px;
+  align-self: flex-start;
+  width: 100%;
 }
 
 .navbar-nav > li {
@@ -134,3 +140,12 @@ table {
   vertical-align: middle;
 }
 
+
+#pt-tab-container {
+  width: 80%;
+  background-color: red;
+  display:flex;
+  flex-direction: row;
+  padding: 20px 0px;
+
+}

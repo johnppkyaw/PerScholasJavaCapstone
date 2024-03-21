@@ -15,6 +15,7 @@ import java.util.List;
 @SpringBootApplication
 public class MedmxApplication{
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(MedmxApplication.class, args);
 	}
