@@ -1,116 +1,179 @@
-2024-03-20T18:19:40.105-07:00  INFO 4231 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 4231 (/Users/johnppkyaw/Desktop/PS/Capstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PS/Capstone/medmx)
-2024-03-20T18:19:40.106-07:00  INFO 4231 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-03-20T18:19:40.126-07:00  INFO 4231 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-03-20T18:19:40.126-07:00  INFO 4231 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-03-20T18:19:40.581-07:00  INFO 4231 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-20T18:19:40.611-07:00  INFO 4231 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 5 JPA repository interfaces.
-2024-03-20T18:19:40.999-07:00  INFO 4231 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-03-20T18:19:41.005-07:00  INFO 4231 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-03-20T18:19:41.006-07:00  INFO 4231 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-03-20T18:19:41.031-07:00  INFO 4231 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-03-20T18:19:41.032-07:00  INFO 4231 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 906 ms
-2024-03-20T18:19:41.120-07:00  WARN 4231 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [096756200B06530244CA9114397FBF9B]
-2024-03-20T18:19:41.190-07:00  INFO 4231 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-20T18:19:41.222-07:00  INFO 4231 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-03-20T18:19:41.239-07:00  INFO 4231 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-03-20T18:19:41.350-07:00  INFO 4231 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-03-20T18:19:41.364-07:00  INFO 4231 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-03-20T18:19:41.525-07:00  INFO 4231 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b47195
-2024-03-20T18:19:41.526-07:00  INFO 4231 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-03-20T18:19:41.565-07:00  WARN 4231 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-03-20T18:19:42.045-07:00  INFO 4231 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-03-20T18:19:42.128-07:00  INFO 4231 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-20T18:19:42.324-07:00  INFO 4231 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-03-20T18:19:42.594-07:00  INFO 4231 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
-2024-03-20T18:19:42.680-07:00  WARN 4231 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-20T18:19:42.746-07:00  INFO 4231 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2024-03-20T18:19:42.938-07:00  INFO 4231 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
-2024-03-20T18:19:42.981-07:00  INFO 4231 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@28df7185, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2c328c3c, org.springframework.security.web.context.SecurityContextHolderFilter@7816f554, org.springframework.security.web.header.HeaderWriterFilter@6cb379df, org.springframework.web.filter.CorsFilter@55dcbba3, org.springframework.security.web.authentication.logout.LogoutFilter@60fedc4b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@f27b8b1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@551d9c9e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30b6f70c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18691b80, org.springframework.security.web.access.ExceptionTranslationFilter@7bb2d7f4, org.springframework.security.web.access.intercept.AuthorizationFilter@63cbfe05]
-2024-03-20T18:19:43.219-07:00  INFO 4231 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-03-20T18:19:43.260-07:00  INFO 4231 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-03-20T18:19:43.269-07:00  INFO 4231 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 3.333 seconds (process running for 3.617)
-2024-03-20T18:19:43.393-07:00  INFO 4231 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-20T18:19:43.393-07:00  INFO 4231 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-03-20T18:19:43.394-07:00  INFO 4231 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-03-20T18:19:53.306-07:00  INFO 4231 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Loading home page
-2024-03-20T18:19:54.626-07:00  INFO 4231 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Login page displayed
-2024-03-20T18:21:22.422-07:00  INFO 4231 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-20T18:21:22.429-07:00  INFO 4231 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-03-20T18:21:22.434-07:00  INFO 4231 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-03-20T18:24:07.630-07:00  INFO 4329 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 4329 (/Users/johnppkyaw/Desktop/PS/Capstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PS/Capstone/medmx)
-2024-03-20T18:24:07.631-07:00  INFO 4329 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-03-20T18:24:07.656-07:00  INFO 4329 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-03-20T18:24:07.656-07:00  INFO 4329 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-03-20T18:24:08.116-07:00  INFO 4329 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-20T18:24:08.145-07:00  INFO 4329 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 5 JPA repository interfaces.
-2024-03-20T18:24:08.527-07:00  INFO 4329 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-03-20T18:24:08.533-07:00  INFO 4329 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-03-20T18:24:08.533-07:00  INFO 4329 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-03-20T18:24:08.558-07:00  INFO 4329 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-03-20T18:24:08.558-07:00  INFO 4329 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 902 ms
-2024-03-20T18:24:08.713-07:00  INFO 4329 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-20T18:24:08.743-07:00  INFO 4329 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-03-20T18:24:08.761-07:00  INFO 4329 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-03-20T18:24:08.869-07:00  INFO 4329 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-03-20T18:24:08.883-07:00  INFO 4329 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-03-20T18:24:09.044-07:00  INFO 4329 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f983009
-2024-03-20T18:24:09.045-07:00  INFO 4329 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-03-20T18:24:09.071-07:00  WARN 4329 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-03-20T18:24:09.543-07:00  INFO 4329 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-03-20T18:24:09.625-07:00  INFO 4329 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-20T18:24:09.822-07:00  INFO 4329 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-03-20T18:24:10.098-07:00  INFO 4329 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
-2024-03-20T18:24:10.188-07:00  WARN 4329 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-20T18:24:10.255-07:00  INFO 4329 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2024-03-20T18:24:10.444-07:00  INFO 4329 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
-2024-03-20T18:24:10.485-07:00  INFO 4329 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@204f4c17, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7aa39ec, org.springframework.security.web.context.SecurityContextHolderFilter@2f420b6b, org.springframework.security.web.header.HeaderWriterFilter@42cb918c, org.springframework.web.filter.CorsFilter@774422c0, org.springframework.security.web.authentication.logout.LogoutFilter@4a5ea63, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@206b3c5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a820c35, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@37bbf278, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@48870c90, org.springframework.security.web.access.ExceptionTranslationFilter@726d8d3b, org.springframework.security.web.access.intercept.AuthorizationFilter@7a95e287]
-2024-03-20T18:24:10.722-07:00  INFO 4329 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-03-20T18:24:10.758-07:00  INFO 4329 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-03-20T18:24:10.768-07:00  INFO 4329 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 3.312 seconds (process running for 3.615)
-2024-03-20T18:24:10.912-07:00  INFO 4329 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-20T18:24:10.912-07:00  INFO 4329 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-03-20T18:24:10.913-07:00  INFO 4329 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-03-20T18:24:15.870-07:00  INFO 4329 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Login page displayed
-2024-03-20T18:24:22.194-07:00  INFO 4329 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
-2024-03-20T18:24:22.199-07:00  INFO 4329 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
-2024-03-20T18:25:18.771-07:00  INFO 4329 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-20T18:25:18.780-07:00  INFO 4329 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-03-20T18:25:18.801-07:00  INFO 4329 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-03-20T18:57:46.553-07:00  INFO 5265 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 5265 (/Users/johnppkyaw/Desktop/PS/Capstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PS/Capstone/medmx)
-2024-03-20T18:57:46.554-07:00  INFO 5265 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-03-20T18:57:46.573-07:00  INFO 5265 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-03-20T18:57:46.573-07:00  INFO 5265 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-03-20T18:57:47.024-07:00  INFO 5265 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-20T18:57:47.053-07:00  INFO 5265 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 5 JPA repository interfaces.
-2024-03-20T18:57:47.437-07:00  INFO 5265 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-03-20T18:57:47.443-07:00  INFO 5265 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-03-20T18:57:47.443-07:00  INFO 5265 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-03-20T18:57:47.467-07:00  INFO 5265 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-03-20T18:57:47.467-07:00  INFO 5265 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 894 ms
-2024-03-20T18:57:47.553-07:00  WARN 5265 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [C8C780EDB06A8D7AF20D055276BB1516]
-2024-03-20T18:57:47.621-07:00  INFO 5265 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-20T18:57:47.652-07:00  INFO 5265 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-03-20T18:57:47.669-07:00  INFO 5265 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-03-20T18:57:47.781-07:00  INFO 5265 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-03-20T18:57:47.795-07:00  INFO 5265 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-03-20T18:57:48.007-07:00  INFO 5265 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2aa23f84
-2024-03-20T18:57:48.008-07:00  INFO 5265 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-03-20T18:57:48.043-07:00  WARN 5265 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-03-20T18:57:48.535-07:00  INFO 5265 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-03-20T18:57:48.614-07:00  INFO 5265 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-20T18:57:48.807-07:00  INFO 5265 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-03-20T18:57:49.074-07:00  INFO 5265 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
-2024-03-20T18:57:49.160-07:00  WARN 5265 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-20T18:57:49.224-07:00  INFO 5265 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2024-03-20T18:57:49.409-07:00  INFO 5265 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
-2024-03-20T18:57:49.451-07:00  INFO 5265 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4c960b87, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6faa4d07, org.springframework.security.web.context.SecurityContextHolderFilter@7a14d79a, org.springframework.security.web.header.HeaderWriterFilter@7e63f10f, org.springframework.web.filter.CorsFilter@7dc8557d, org.springframework.security.web.authentication.logout.LogoutFilter@28f2922f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@502a85e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7b73022c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5477f735, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fe5f9df, org.springframework.security.web.access.ExceptionTranslationFilter@f646a18, org.springframework.security.web.access.intercept.AuthorizationFilter@4c47b500]
-2024-03-20T18:57:49.674-07:00  INFO 5265 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-03-20T18:57:49.712-07:00  INFO 5265 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-03-20T18:57:49.720-07:00  INFO 5265 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 3.344 seconds (process running for 3.694)
-2024-03-20T18:57:50.288-07:00  INFO 5265 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-20T18:57:50.288-07:00  INFO 5265 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-03-20T18:57:50.289-07:00  INFO 5265 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2024-03-20T18:57:52.222-07:00  INFO 5265 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Loading home page
-2024-03-20T18:57:55.637-07:00  INFO 5265 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Login page displayed
-2024-03-20T18:59:05.398-07:00  INFO 5265 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
-2024-03-20T18:59:05.403-07:00  INFO 5265 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:19:30.924-07:00  INFO 7365 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 7365 (/Users/johnppkyaw/Desktop/PS/Capstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PS/Capstone/medmx)
+2024-03-21T07:19:30.929-07:00  INFO 7365 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-21T07:19:30.948-07:00  INFO 7365 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-21T07:19:30.949-07:00  INFO 7365 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-21T07:19:31.429-07:00  INFO 7365 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-21T07:19:31.457-07:00  INFO 7365 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 5 JPA repository interfaces.
+2024-03-21T07:19:31.881-07:00  INFO 7365 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-21T07:19:31.887-07:00  INFO 7365 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-21T07:19:31.888-07:00  INFO 7365 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-21T07:19:31.913-07:00  INFO 7365 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-21T07:19:31.913-07:00  INFO 7365 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 964 ms
+2024-03-21T07:19:32.068-07:00  INFO 7365 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-21T07:19:32.100-07:00  INFO 7365 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-21T07:19:32.119-07:00  INFO 7365 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-21T07:19:32.233-07:00  INFO 7365 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-21T07:19:32.247-07:00  INFO 7365 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-21T07:19:32.462-07:00  INFO 7365 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ea16e86
+2024-03-21T07:19:32.463-07:00  INFO 7365 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-21T07:19:32.498-07:00  WARN 7365 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-21T07:19:32.976-07:00  INFO 7365 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-21T07:19:33.076-07:00  INFO 7365 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-21T07:19:33.272-07:00  INFO 7365 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-21T07:19:33.542-07:00  INFO 7365 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
+2024-03-21T07:19:33.633-07:00  WARN 7365 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-21T07:19:33.696-07:00  INFO 7365 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-21T07:19:33.884-07:00  INFO 7365 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-21T07:19:33.921-07:00  INFO 7365 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@58a38cb4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ad8cf7, org.springframework.security.web.context.SecurityContextHolderFilter@34b3d40c, org.springframework.security.web.header.HeaderWriterFilter@533a924c, org.springframework.web.filter.CorsFilter@6319c3c, org.springframework.security.web.authentication.logout.LogoutFilter@56f2671e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6228c3e7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a16f79c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54b862a3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e227539, org.springframework.security.web.access.ExceptionTranslationFilter@20c554a0, org.springframework.security.web.access.intercept.AuthorizationFilter@45638646]
+2024-03-21T07:19:34.140-07:00  INFO 7365 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-21T07:19:34.177-07:00  INFO 7365 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-21T07:19:34.186-07:00  INFO 7365 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 3.441 seconds (process running for 3.837)
+2024-03-21T07:19:34.423-07:00  INFO 7365 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-21T07:19:34.423-07:00  INFO 7365 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-21T07:19:34.424-07:00  INFO 7365 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-21T07:19:52.139-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-21T07:19:52.438-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-21T07:19:53.707-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Loading home page
+2024-03-21T07:19:53.860-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-21T07:20:06.575-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-21T07:20:06.658-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-21T07:20:11.680-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:20:11.683-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:22:23.591-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:22:23.591-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:22:43.422-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:22:43.423-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:24:42.596-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:24:42.596-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:25:45.852-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:25:45.852-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:25:54.477-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:25:54.478-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:27:47.716-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:27:47.716-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:28:37.214-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:28:37.214-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:39:23.819-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:39:23.820-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:39:30.590-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:39:30.590-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:42:21.540-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:42:21.540-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:42:23.558-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:42:23.560-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:42:33.911-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:42:33.911-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:42:38.140-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Loading home page
+2024-03-21T07:42:38.155-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : A physician is logged in
+2024-03-21T07:42:46.882-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:42:46.883-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:43:09.452-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:43:09.452-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:44:14.148-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:44:14.149-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:44:20.147-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:44:20.147-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:46:40.012-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:46:40.013-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:46:50.829-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:46:50.829-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:47:01.980-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:47:01.981-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:47:08.279-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:47:08.279-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:49:55.056-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:49:55.057-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:49:57.951-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:49:57.952-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:50:06.323-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:50:06.323-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:50:18.150-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:50:18.150-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:50:20.274-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:50:20.274-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:50:33.483-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:50:33.483-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:50:44.545-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:50:44.546-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:50:55.513-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:50:55.514-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:51:04.916-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:51:04.916-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:51:08.733-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:51:08.734-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:54:43.337-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:54:43.339-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:54:49.306-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:54:49.306-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:55:03.999-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:55:03.999-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T07:58:44.641-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T07:58:44.642-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:01:13.484-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:01:13.484-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:17:57.933-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:17:57.933-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:19:03.561-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:19:03.562-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:19:25.471-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:19:25.471-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:20:20.347-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:20:20.347-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:20:26.586-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:20:26.587-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:21:08.039-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:21:08.039-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:21:18.294-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:21:18.296-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:21:42.241-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:21:42.241-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:23:44.441-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:23:44.442-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:23:57.673-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:23:57.673-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:24:06.656-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:24:06.656-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:24:34.565-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:24:34.565-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:25:18.926-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:25:18.926-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:25:51.956-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:25:51.956-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:26:40.930-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:26:40.931-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:26:53.484-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:26:53.484-07:00  INFO 7365 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:27:07.084-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:27:07.084-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:28:38.716-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:28:38.716-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:29:07.764-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:29:07.764-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:30:30.813-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:30:30.813-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:31:53.141-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:31:53.142-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:32:27.234-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:32:27.234-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:48:14.254-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:48:14.255-07:00  INFO 7365 --- [http-nio-8080-exec-7] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:48:25.427-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:48:25.427-07:00  INFO 7365 --- [http-nio-8080-exec-10] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:48:40.223-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:48:40.224-07:00  INFO 7365 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:49:05.064-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:49:05.064-07:00  INFO 7365 --- [http-nio-8080-exec-4] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:49:18.534-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:49:18.534-07:00  INFO 7365 --- [http-nio-8080-exec-8] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:50:46.087-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:50:46.088-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:51:48.924-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:51:48.925-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:55:04.219-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:55:04.219-07:00  INFO 7365 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:55:31.752-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:55:31.752-07:00  INFO 7365 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:55:36.665-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:55:36.667-07:00  INFO 7365 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-21T08:55:41.841-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
+2024-03-21T08:55:41.842-07:00  INFO 7365 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Directing to patient-detail html
