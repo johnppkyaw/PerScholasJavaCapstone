@@ -179,6 +179,14 @@ public class MainController {
         } else {
             log.warn("Patient not found!");
         }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            Physician physician = physicianServices.findUserByUsername(username);
+            if(physician != null) {
+                model.addAttribute("physician", physician);
+            }
+        }
         log.info("Directing to patient-detail html");
         return "patient-detail";
     }

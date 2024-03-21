@@ -19,16 +19,12 @@ import java.time.LocalTime;
 @ToString
 public class Note {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "patient_seq")
-    @SequenceGenerator(name = "patient_seq", sequenceName = "patient_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "note_seq")
+    @SequenceGenerator(name = "note_seq", sequenceName = "note_sequence", allocationSize = 1)
     private Long id;
 
     @Column(nullable = false)
     private LocalDate date;
-
-    @Column(nullable = false)
-    @JsonDeserialize(using = CustomLocalTimeDeserializer.class)
-    private LocalTime time;
 
     @NonNull
     @ManyToOne

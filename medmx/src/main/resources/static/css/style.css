@@ -49,7 +49,7 @@ table {
   border:solid black 1px;
 }
 
-#editPatientModal, #add-schedule-modal, #edit-schedule-modal {
+#editPatientModal, #add-schedule-modal, #edit-schedule-modal, #create-note-modal {
   position: fixed;
   top: 10%;
   left: 50%;
@@ -62,11 +62,15 @@ table {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.modal-title {
+  margin-top: 0;
+}
+
 .modal-content{
-  padding: 50px;
+  padding: 30px;
 
 }
-#editPatientForm, #add-schedule-form, #edit-schedule-form{
+#editPatientForm, #add-schedule-form, #edit-schedule-form, #create-note-form{
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -205,13 +209,16 @@ table {
   flex-grow: 2;
   display:flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border: 1px solid white;
   border-radius: 5px;
   max-height: 100%;
   overflow-y:auto;
 }
+
+#note-table {
+  width:100%;
+}
+
 #create-note-button-area {
   flex-grow: 1;
   flex-basis: 20%;
@@ -228,3 +235,20 @@ table {
   border-style: none;
 }
 
+#create-note-modal {
+  width: 80%;
+  height: 80%;
+}
+
+#note-content {
+  height: 300px;
+  border: 1px solid wheat;
+  padding: 10px;
+  max-height: 100%;
+  overflow-y:auto;
+}
+
+.notes-row:hover {
+  background-color: #abdef5;
+  cursor: pointer;
+}
