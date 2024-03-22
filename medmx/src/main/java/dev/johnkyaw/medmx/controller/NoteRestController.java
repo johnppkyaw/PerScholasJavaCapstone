@@ -1,8 +1,7 @@
 package dev.johnkyaw.medmx.controller;
 
 import dev.johnkyaw.medmx.model.Note;
-import dev.johnkyaw.medmx.service.NoteService;
-import lombok.extern.slf4j.Slf4j;
+import dev.johnkyaw.medmx.service.NoteServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,10 +19,10 @@ import java.util.List;
 public class NoteRestController {
     Logger log = LoggerFactory.getLogger(PatientRestController.class);
 
-    private final NoteService noteService;
+    private final NoteServices noteService;
 
     @Autowired
-    public NoteRestController(NoteService noteService) {
+    public NoteRestController(NoteServices noteService) {
         this.noteService = noteService;
     }
 

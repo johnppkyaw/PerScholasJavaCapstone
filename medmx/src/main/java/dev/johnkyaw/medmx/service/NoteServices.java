@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NoteService {
+public class NoteServices {
     private final NoteRepository noteRepository;
 
     @Autowired
-    public NoteService(NoteRepository noteRepository) {
+    public NoteServices(NoteRepository noteRepository) {
         this.noteRepository = noteRepository;
     }
 

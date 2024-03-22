@@ -86,21 +86,24 @@
             </div>
 
             <button type="button" id="create-note-submit-button"> Create</button>
-            <button type="button" id="closeModal">Close</button>
+            <button type="button" class="close-modal-btn">Close</button>
         </form>
     </div>
 </div>
 
-//load-note-modal
+<!--load-note-modal-->
 <div id="load-note-modal" class="modal">
     <div class="modal-content" id="load-note-parent">
+        Hello
     </div>
+    <button type="button" class="close-modal-btn">Close</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script th:inline="javascript">
     const patient = [[${patient}]];
     const physician = [[${physician}]];
+    const notes = [[${notes}]];
 </script>
 <script>
     //Get today's date with timezone adjusted
@@ -110,10 +113,10 @@
         return local.toJSON().slice(0,10);
     });
 
-    console.log(patient);
+    console.log(notes);
     const createNoteButton = document.getElementById('create-note-button');
     const createNoteModal = document.getElementById("create-note-modal");
-    const closeModalButton = document.getElementById('closeModal');
+    const closeModalButtons = document.getElementsByClassName("close-modal-btn")
 
     const createNoteDate = document.getElementById('today-date');
     const createNoteContent = document.getElementById('note-content');
@@ -125,24 +128,31 @@
 
     const noteTableBody = document.getElementById('note-table-body');
 
+    const loadNoteModal = document.getElementById("load-note-modal");
+    const loadNoteParent = document.getElementById("load-note-parent");
+
     const patientName = patient.firstName + " " + patient.lastName;
     const patientGender = patient.gender.toLowerCase();
 
     //Fetch all notes for this patient
     loadNoteRows();
     function loadNoteRows() {
-        const patientId = patient.id;
-        noteTableBody.innerHTML = "";
-        fetch(`/api/notes/patients/${patientId}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                data.forEach(note => {
-                    const noteRow = createNoteRow(note);
-                    noteTableBody.appendChild(noteRow);
-                })
-            })
-            .catch(error => console.error('Error fetching note data:', error));
+        notes.forEach(note => {
+            const noteRow = createNoteRow(note);
+            noteTableBody.appendChild(noteRow);
+        })
+        // const patientId = patient.id;
+        // noteTableBody.innerHTML = "";
+        // fetch(`/api/notes/patients/${patientId}`)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         data.forEach(note => {
+        //             const noteRow = createNoteRow(note);
+        //             noteTableBody.appendChild(noteRow);
+        //         })
+        //     })
+        //     .catch(error => console.error('Error fetching note data:', error));
     }
 
 
@@ -170,9 +180,14 @@
         visitType.value = "Acute complaint";
     })
 
-    closeModalButton.addEventListener("click", () => {
-        toggleModal(createNoteModal, false);
-    })
+
+    for(const button of closeModalButtons) {
+        button.addEventListener("click", () => {
+            toggleModal(createNoteModal, false);
+            toggleModal(loadNoteModal, false);
+        });
+    }
+
 
     //Save the note to database after create note is clicked in modal
     createNoteSubmitButton.addEventListener("click", () => {
@@ -205,26 +220,61 @@
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
         const td3 = document.createElement("td");
+        const editDiv = document.createElement("div");
+        const deleteDiv = document.createElement("div");
 
 
         td2.setAttribute("id", "notes-row-" + eachNote.id);
         td2.setAttribute("class", "notes-row");
         td1.textContent = eachNote.date;
         td2.textContent = eachNote.visitType;
-        td3.innerHTML = "<div class='notes-row-edit'>Edit</div> <div class='notes-row-delete'>Delete</div>";
+        editDiv.setAttribute("id", "notes-row-edit-" + eachNote.id);
+        editDiv.setAttribute("class", "notes-edit-btn" + eachNote.id);
+        deleteDiv.setAttribute("id", "notes-row-delete-" + eachNote.id);
+        deleteDiv.setAttribute("class", "notes-delete-btn" + eachNote.id);
+        editDiv.innerText = "Edit";
+        deleteDiv.innerText = "Delete";
+        td3.appendChild(editDiv);
+        td3.appendChild(deleteDiv);
 
-        td2.addEventListener("dblclick", loadNote);
 
+        td2.addEventListener("click", loadNote);
+        editDiv.addEventListener("click", editNote);
+        deleteDiv.addEventListener("click", deleteNote);
 
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         return tr;
-    };
+    }
 
     function loadNote(e) {
-        console.log(e.target.id);
+        const id = parseInt(e.target.id.split("-")[2]);
+        const note = notes.filter(note => note.id === id)[0];
+        loadNoteParent.innerText = note.noteContent;
+        toggleModal(loadNoteModal, true);
     }
+
+    function editNote(e) {
+
+    }
+
+    function deleteNote(e) {
+        const id = parseInt(e.target.id.split("-")[3]);
+        if(confirm("Are you sure you want to delete this note?  It cannot be recovered")) {
+            fetch(`/api/notes/${id}`, {
+                method: 'DELETE',
+            }).then(response => {
+                if(response.ok) {
+                    window.location.reload();
+                } else {
+                    throw new Error('Failed to delete the note');
+                }
+            }).catch(error => console.error('Error deleting the note: ', error));
+        }
+    }
+
+
 
 
     function toggleModal(modalDiv, show) {

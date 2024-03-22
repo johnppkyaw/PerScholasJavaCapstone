@@ -1,12 +1,13 @@
 package dev.johnkyaw.medmx.controller;
 
 import dev.johnkyaw.medmx.dto.PhysicianDTO;
+import dev.johnkyaw.medmx.model.Note;
 import dev.johnkyaw.medmx.model.Patient;
 import dev.johnkyaw.medmx.model.Physician;
+import dev.johnkyaw.medmx.service.NoteServices;
 import dev.johnkyaw.medmx.service.PatientServices;
 import dev.johnkyaw.medmx.service.PhysicianServices;
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,14 @@ public class MainController {
     private PhysicianServices physicianServices;
     private PatientServices patientServices;
 
+    private NoteServices noteServices;
+
     @Autowired
-    public MainController(PhysicianServices physicianServices, PatientServices patientServices) {
+    public MainController(PhysicianServices physicianServices, PatientServices patientServices, NoteServices noteServices) {
         log.info("injected physicianServices and patientServices to main controller");
         this.physicianServices = physicianServices;
         this.patientServices = patientServices;
+        this.noteServices = noteServices;
     }
 
     @GetMapping("/")
@@ -170,6 +174,7 @@ public class MainController {
 
     @GetMapping("/patientDetail/{id}")
     public String loadPatientDetailPage(@PathVariable("id") long id, Model model) {
+        //Get patient object and add to the attribute
         Optional<Patient> patientData = patientServices.getPatientById(id);
         if(patientData.isPresent()){
             log.info("Patient is present adding to model attribute");
@@ -179,6 +184,7 @@ public class MainController {
         } else {
             log.warn("Patient not found!");
         }
+        //Get logged in physician and add that to attribute
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName();
@@ -187,6 +193,9 @@ public class MainController {
                 model.addAttribute("physician", physician);
             }
         }
+        //Get all notes by patient id;
+        List<Note> allPatientNotes = noteServices.getAllNotesByPatientId(id);
+        model.addAttribute("notes", allPatientNotes);
         log.info("Directing to patient-detail html");
         return "patient-detail";
     }
