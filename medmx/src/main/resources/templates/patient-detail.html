@@ -71,6 +71,7 @@
     </div>
 </div>
 
+<!--Create note modal-->
 <div id="create-note-modal" class="modal">
     <div class="modal-content">
         <h2 class="modal-title">Create a Note</h2>
@@ -97,6 +98,27 @@
         Hello
     </div>
     <button type="button" class="close-modal-btn">Close</button>
+</div>
+
+<!--Edit note modal-->
+<div id="edit-note-modal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-title">Create a Note</h2>
+        <form id="edit-note-form">
+            <label for="today-date-edit">Today's Date</label>
+            <input id="today-date-edit" name="today-date" type="date">
+
+            <label for="visit-type-edit">Visit Type: </label>
+            <input id="visit-type-edit" name="visit-type" type="text">
+
+            <label for="note-content-edit">Note Content: </label>
+            <div id="note-content-edit" contenteditable="true">
+            </div>
+
+            <button type="button" id="edit-note-submit-button">Edit</button>
+            <button type="button" class="close-modal-btn">Close</button>
+        </form>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -130,6 +152,9 @@
 
     const loadNoteModal = document.getElementById("load-note-modal");
     const loadNoteParent = document.getElementById("load-note-parent");
+
+    const editNoteModal = document.getElementById("edit-note-modal");
+    const editNoteButton = document.getElementById("edit-note-submit-button");
 
     const patientName = patient.firstName + " " + patient.lastName;
     const patientGender = patient.gender.toLowerCase();
@@ -226,12 +251,13 @@
 
         td2.setAttribute("id", "notes-row-" + eachNote.id);
         td2.setAttribute("class", "notes-row");
+        td3.setAttribute("class", "notes-action-row");
         td1.textContent = eachNote.date;
         td2.textContent = eachNote.visitType;
         editDiv.setAttribute("id", "notes-row-edit-" + eachNote.id);
-        editDiv.setAttribute("class", "notes-edit-btn" + eachNote.id);
+        editDiv.setAttribute("class", "notes-edit-btn");
         deleteDiv.setAttribute("id", "notes-row-delete-" + eachNote.id);
-        deleteDiv.setAttribute("class", "notes-delete-btn" + eachNote.id);
+        deleteDiv.setAttribute("class", "notes-delete-btn");
         editDiv.innerText = "Edit";
         deleteDiv.innerText = "Delete";
         td3.appendChild(editDiv);
@@ -256,7 +282,7 @@
     }
 
     function editNote(e) {
-
+        editNoteModal.style.display = "block";
     }
 
     function deleteNote(e) {

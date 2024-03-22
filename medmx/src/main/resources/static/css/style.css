@@ -49,7 +49,7 @@ table {
   border:solid black 1px;
 }
 
-#editPatientModal, #add-schedule-modal, #edit-schedule-modal, #create-note-modal, #load-note-modal{
+#editPatientModal, #add-schedule-modal, #edit-schedule-modal, #create-note-modal, #load-note-modal, #edit-note-modal{
   position: fixed;
   top: 10%;
   left: 50%;
@@ -70,7 +70,7 @@ table {
   padding: 30px;
 
 }
-#editPatientForm, #add-schedule-form, #edit-schedule-form, #create-note-form{
+#editPatientForm, #add-schedule-form, #edit-schedule-form, #create-note-form, #edit-note-form{
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -125,7 +125,7 @@ table {
   cursor: pointer;
 }
 
-.patient-action-buttons{
+.patient-action-buttons, .notes-edit-btn, .notes-delete-btn{
   border-radius: 25px;
   border-color: #003cff;
   text-align: center;
@@ -133,9 +133,17 @@ table {
   color: white;
 }
 
-#patient-delete-button {
+#patient-delete-button, .notes-delete-btn {
   background-color: red;
   border-color: red;
+}
+
+.notes-action-row {
+  width: 20%;
+  padding: 10px 30px;
+}
+.notes-delete-btn:hover, .notes-edit-btn:hover {
+  cursor:pointer;
 }
 
 .align-middle {
