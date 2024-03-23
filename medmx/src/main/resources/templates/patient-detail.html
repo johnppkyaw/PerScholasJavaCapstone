@@ -39,16 +39,20 @@
 
 <br />
 <div id="pt-tab-container">
-    <div class="patient-tabs" id="medical-history">Medical History</div>
-    <div class="patient-tabs" id="prescriptions">Prescriptions</div>
-    <div class="patient-tabs" id="clinic-notes">Clinic Notes</div>
+    <div class="patient-tabs" id="information-tab">Information</div>
+    <div class="patient-tabs" id="clinic-notes-tab">Clinic Notes</div>
+    <div class="patient-tabs" id="prescriptions-tab">Prescriptions</div>
 </div>
 
 <div id="display-info">
-    <div class="display-sections" id="history-prescription-section">
-        <div id="history-section"></div>
-        <div id="prescription-section"></div>
+    <div class="display-sections" id="history-section">
+        <p><Strong>Name: </Strong><span th:text="${patient.firstName} + ' ' + ${patient.lastName}"></span></p>
+        <p th:text="'Date of Birth (YYYY-MM-DD): ' + ${patient.dateOfBirth}"></p>
+        <p th:text="'Address: ' + ${patient.address}"></p>
+        <p th:text="'Address 2: ' + ${patient.address2}"></p>
+        <p th:text="'Phone: ' + ${patient.phone}"></p>
     </div>
+    <div class="display-sections" id="prescription-section"></div>
     <div class="display-sections" id="clinic-notes-nav-section">
         <div id="notes-list-section">
             <table id="note-table">
@@ -95,7 +99,6 @@
 <!--load-note-modal-->
 <div id="load-note-modal" class="modal">
     <div class="modal-content" id="load-note-parent">
-        Hello
     </div>
     <button type="button" class="close-modal-btn">Close</button>
 </div>
@@ -103,7 +106,7 @@
 <!--Edit note modal-->
 <div id="edit-note-modal" class="modal">
     <div class="modal-content">
-        <h2 class="modal-title">Create a Note</h2>
+        <h2 class="modal-title">Edit Note</h2>
         <form id="edit-note-form">
             <label for="today-date-edit">Today's Date</label>
             <input id="today-date-edit" name="today-date" type="date">
@@ -122,12 +125,64 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 <script th:inline="javascript">
     const patient = [[${patient}]];
     const physician = [[${physician}]];
     const notes = [[${notes}]];
 </script>
+
 <script>
+    //Display session based on the tab
+    const infoTab = document.getElementById("information-tab");
+    const notesTab = document.getElementById("clinic-notes-tab");
+    const rxTab = document.getElementById("prescriptions-tab");
+    const historySec = document.getElementById("history-section");
+    const prescriptionSec = document.getElementById("prescription-section");
+    const noteSec = document.getElementById("clinic-notes-nav-section");
+
+    //On loading the page, hide notes and prescription, tab
+    toggleDisplay(prescriptionSec, false);
+    toggleDisplay(noteSec, false);
+    changeBackgroundColor(infoTab, true);
+
+    //When a tab is clicked, only display that section and hide other tabs.
+    infoTab.addEventListener("click", () => {
+        toggleDisplay(prescriptionSec, false);
+        toggleDisplay(noteSec, false);
+        toggleDisplay(historySec, true);
+        changeBackgroundColor(rxTab, false);
+        changeBackgroundColor(notesTab, false);
+        changeBackgroundColor(infoTab, true);
+    })
+    notesTab.addEventListener("click", () => {
+        toggleDisplay(prescriptionSec, false);
+        toggleDisplay(noteSec, true);
+        toggleDisplay(historySec, false);
+        changeBackgroundColor(rxTab, false);
+        changeBackgroundColor(notesTab, true);
+        changeBackgroundColor(infoTab, false);
+    })
+    rxTab.addEventListener("click", () => {
+        toggleDisplay(prescriptionSec, true);
+        toggleDisplay(noteSec, false);
+        toggleDisplay(historySec, false);
+        changeBackgroundColor(rxTab, true);
+        changeBackgroundColor(notesTab, false);
+        changeBackgroundColor(infoTab, false);
+    })
+    function changeBackgroundColor(element, clicked) {
+        if(clicked === true) {
+            element.style.backgroundColor = "#0d3549";
+        } else {
+            element.style.backgroundColor = "darkslategrey";
+        }
+    }
+
+
+
+
+
     //Get today's date with timezone adjusted
     Date.prototype.toDateInputValue = (function() {
         const local = new Date(this);
@@ -135,56 +190,51 @@
         return local.toJSON().slice(0,10);
     });
 
-    console.log(notes);
+    //the table where the notes will be added as a row
+    const noteTableBody = document.getElementById('note-table-body');
+
     const createNoteButton = document.getElementById('create-note-button');
     const createNoteModal = document.getElementById("create-note-modal");
-    const closeModalButtons = document.getElementsByClassName("close-modal-btn")
 
+    //The close buttons of all modals
+    const closeModalButtons = document.getElementsByClassName("close-modal-btn");
+
+    //The fields in the create-note modal
     const createNoteDate = document.getElementById('today-date');
     const createNoteContent = document.getElementById('note-content');
-    createNoteDate.value= new Date().toDateInputValue();
+    createNoteDate.value = new Date().toDateInputValue();
 
     const visitType = document.getElementById("visit-type");
 
     const createNoteSubmitButton = document.getElementById('create-note-submit-button');
 
-    const noteTableBody = document.getElementById('note-table-body');
-
+    //Load note modal
     const loadNoteModal = document.getElementById("load-note-modal");
     const loadNoteParent = document.getElementById("load-note-parent");
 
+    //Edit note modal
     const editNoteModal = document.getElementById("edit-note-modal");
+    const editNoteDate = document.getElementById("today-date-edit");
+    const editVisitType = document.getElementById("visit-type-edit");
+    const editNoteContent = document.getElementById("note-content-edit");
     const editNoteButton = document.getElementById("edit-note-submit-button");
 
     const patientName = patient.firstName + " " + patient.lastName;
     const patientGender = patient.gender.toLowerCase();
 
-    //Fetch all notes for this patient
+    //Fetch all notes for this patient and load them into the table.
     loadNoteRows();
     function loadNoteRows() {
         notes.forEach(note => {
             const noteRow = createNoteRow(note);
             noteTableBody.appendChild(noteRow);
         })
-        // const patientId = patient.id;
-        // noteTableBody.innerHTML = "";
-        // fetch(`/api/notes/patients/${patientId}`)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         data.forEach(note => {
-        //             const noteRow = createNoteRow(note);
-        //             noteTableBody.appendChild(noteRow);
-        //         })
-        //     })
-        //     .catch(error => console.error('Error fetching note data:', error));
     }
 
-
-
-
+    //When create note button is clicked, it will display create note modal
+    //With templated information
     createNoteButton.addEventListener("click", () => {
-        toggleModal(createNoteModal, true);
+        toggleDisplay(createNoteModal, true);
 
         const age = getAge(patient.dateOfBirth);
         console.log(age);
@@ -203,18 +253,19 @@
         createNoteContent.innerText = chiefComplaint + chiefComplaintLine + hpi + hpiLine + pe + peLine + ap + apLine;
 
         visitType.value = "Acute complaint";
-    })
+    });
 
-
+    //This will close the currently opened modal when the close button is clicked
     for(const button of closeModalButtons) {
         button.addEventListener("click", () => {
-            toggleModal(createNoteModal, false);
-            toggleModal(loadNoteModal, false);
+            toggleDisplay(createNoteModal, false);
+            toggleDisplay(loadNoteModal, false);
+            toggleDisplay(editNoteModal, false);
         });
     }
 
 
-    //Save the note to database after create note is clicked in modal
+    //Save the note to database after create note button inside the create note model is clicked.
     createNoteSubmitButton.addEventListener("click", () => {
         const newNote = {};
         newNote.date = createNoteDate.value;
@@ -248,7 +299,6 @@
         const editDiv = document.createElement("div");
         const deleteDiv = document.createElement("div");
 
-
         td2.setAttribute("id", "notes-row-" + eachNote.id);
         td2.setAttribute("class", "notes-row");
         td3.setAttribute("class", "notes-action-row");
@@ -262,7 +312,6 @@
         deleteDiv.innerText = "Delete";
         td3.appendChild(editDiv);
         td3.appendChild(deleteDiv);
-
 
         td2.addEventListener("click", loadNote);
         editDiv.addEventListener("click", editNote);
@@ -278,13 +327,52 @@
         const id = parseInt(e.target.id.split("-")[2]);
         const note = notes.filter(note => note.id === id)[0];
         loadNoteParent.innerText = note.noteContent;
-        toggleModal(loadNoteModal, true);
+        toggleDisplay(loadNoteModal, true);
     }
 
+    //A function that will bring in edit note modal
+    //with prefilled details of the note.
     function editNote(e) {
+        const noteId = parseInt(e.target.id.split("-")[3]);
+        const note = notes.filter(note => note.id === noteId)[0];
+        const patientId = patient.id;
+        editNoteDate.value = note.date;
+        editVisitType.value = note.visitType;
+        editNoteContent.innerText = note.noteContent;
+
         editNoteModal.style.display = "block";
+        //When the edit button is clicked in the edit note modal
+        //it will send a PUT request to the database with the edited note object.
+        editNoteButton.addEventListener("click", function() {
+            updateNote(noteId, patientId);
+        });
     }
 
+    function updateNote(noteId, patientId) {
+        const updatedNote = {
+            date: editNoteDate.value,
+            visitType: editVisitType.value,
+            noteContent: editNoteContent.innerText,
+            patient: patient,
+            physician: physician
+        };
+        const URL = `/api/notes/${noteId}`;
+        const option = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedNote)
+        }
+        fetch(URL, option)
+            .then(response => {
+                if(response.ok) {
+                    window.location.reload();
+                } else {
+                    throw new Error('Failed to edit the note');
+                }
+            }).catch(error => console.error('Error editing the note: ', error));
+    }
+
+    //Function that deletes the note from the database
     function deleteNote(e) {
         const id = parseInt(e.target.id.split("-")[3]);
         if(confirm("Are you sure you want to delete this note?  It cannot be recovered")) {
@@ -300,10 +388,8 @@
         }
     }
 
-
-
-
-    function toggleModal(modalDiv, show) {
+    //Function to display a modal or not.
+    function toggleDisplay(modalDiv, show) {
         if(show === true) {
             modalDiv.style.display = "block";
         } else {
@@ -311,6 +397,7 @@
         }
     }
 
+    //Calculate age based on date of birth
     function getAge(dateString) {
         const today = new Date();
         const birthDate = new Date(dateString);
@@ -339,157 +426,6 @@
 
         return age + " years " + m + " months " + d + " days";
     }
-
-
-    // const changePatientSelectOption = (e) => {
-    //     const currOption = e.target.value;
-    //     // Fetch patient data from the backend
-    //     let route = "";
-    //     if(currOption === "all") {
-    //         route = "/api/patients";
-    //     } else {
-    //         route = "api/physicians/"+physicianId+"/patients";
-    //     }
-    //     fetch(route)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             // Populate table rows patient data
-    //             loadPatient(data);
-    //         })
-    //         .catch(error => console.error('Error fetching patient data:', error));
-    // }
-    // const selectElement = document.getElementById("selectPatient");
-    // selectElement.addEventListener("change", changePatientSelectOption);
-    //
-    // //load physician's patient list by default
-    // changePatientSelectOption({target: selectElement});
-    //
-    //
-    // const loadPatient = (patientList) => {
-    //     const patientTableBody = document.getElementById('patientTableBody');
-    //     // Clear existing table rows
-    //     patientTableBody.innerHTML = '';
-    //     patientList.forEach(patient => {
-    //         const row = document.createElement('tr');
-    //         row.innerHTML = `
-    //                     <td>${patient.id}</td>
-    //                     <td>${patient.firstName}</td>
-    //                     <td>${patient.lastName}</td>
-    //                     <td>${patient.dateOfBirth}</td>
-    //                     <td>${patient.gender}</td>
-    //                     <td>${patient.phone}</td>
-    //                     <td class="align-middle">
-    //                         <button class="patient-action-buttons" th:href="@{/schedule/${patient.id}">View</button>
-    //                         <button class="patient-action-buttons" onClick="openEditModal(${patient.id})">Edit</button>
-    //                         <button class="patient-action-buttons" id="patient-delete-button" onClick="deletePatient(${patient.id})">Delete</button></td>
-    //                 `;
-    //         patientTableBody.appendChild(row);
-    //     });
-    // }
-    // //Search function
-    // const searchField = document.getElementById("search-patient");
-    // const searchFieldButton = document.getElementById("search-patient-button");
-    // const searchPatient = () => {
-    //     const searchString = parseInt(searchField.value);
-    //     let fetchURL = "";
-    //     //if it's number
-    //     if(!isNaN(searchString)) {
-    //         fetchURL = "/patients/"+searchString;
-    //     } else {
-    //         fetchURL = "/patients/byLastName?lastName="+searchString;
-    //     }
-    // }
-    // searchFieldButton.addEventListener("click", searchPatient)
-    //
-    //
-    //
-    // //search by id
-    // //check if it's number
-    // //if not a number, search as a string
-    //
-    //
-    // // Get the edit modal
-    // const modal = document.getElementById('editPatientModal');
-    //
-    // // Get the close button element that closes the modal
-    // const closeModal = document.getElementById('closeModal');
-    //
-    // // When the user clicks on the edit button, open the modal
-    // function openEditModal(patientId) {
-    //     // Fetch patient details by ID and pre-fill the form fields
-    //     fetch(`/api/patients/${patientId}`)
-    //         .then(response => response.json())
-    //         .then(patient => {
-    //             //pre-populate the field with target patient
-    //             document.getElementById('firstName').value = patient.firstName;
-    //             document.getElementById('lastName').value = patient.lastName;
-    //             document.getElementById('dateOfBirth').value = patient.dateOfBirth;
-    //             document.getElementById('gender').value = patient.gender;
-    //             document.getElementById('address').value = patient.address;
-    //             document.getElementById('address2').value = patient.address2;
-    //             document.getElementById('phone').value = patient.phone;
-    //
-    //             // Show the modal
-    //             modal.style.display = 'block';
-    //
-    //             const updatePatientButton = document.getElementById('updatePatient');
-    //             updatePatientButton.addEventListener('click',() => updatePatient(patientId));
-    //         })
-    //         .catch(error => console.error('Error fetching patient details:', error));
-    // }
-    // function updatePatient(patientId) {
-    //     console.log(document.getElementById('phone').value);
-    //     const updatedPatient = {
-    //         firstName: document.getElementById('firstName').value,
-    //         lastName: document.getElementById('lastName').value,
-    //         dateOfBirth: document.getElementById('dateOfBirth').value,
-    //         gender: document.getElementById('gender').value,
-    //         address: document.getElementById('address').value,
-    //         address2: document.getElementById('address2').value,
-    //         phone: document.getElementById('phone').value
-    //     };
-    //
-    //     const requestOptions = {
-    //         method: 'PUT',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(updatedPatient)
-    //     };
-    //     fetch('/api/patients/'+patientId, requestOptions)
-    //         .then(response => {
-    //             if(response.ok) {
-    //                 window.location.reload();
-    //             } else {
-    //                 throw new Error('Failed to delete patient');
-    //             }
-    //         }).catch(error => console.error('Error deleting patient: ', error));
-    // }
-    //
-    // // When the user clicks on close button, close the modal
-    // closeModal.onclick = function() {
-    //     modal.style.display = 'none';
-    // };
-    //
-    // // When the user clicks anywhere outside the modal, close it
-    // window.onclick = function(event) {
-    //     if (event.target === modal) {
-    //         modal.style.display = 'none';
-    //     }
-    // };
-    //
-    // // Delete the patient
-    // function deletePatient(patientId) {
-    //     if(confirm("Are you sure you want to remove this patient from the system?")) {
-    //         fetch('/api/patients/'+ patientId, {
-    //             method: 'DELETE',
-    //         }).then(response => {
-    //             if(response.ok) {
-    //                 window.location.reload();
-    //             } else {
-    //                 throw new Error('Failed to delete patient');
-    //             }
-    //         }).catch(error => console.error('Error deleting patient: ', error));
-    //     }
-    // }
 </script>
 </body>
 </html>

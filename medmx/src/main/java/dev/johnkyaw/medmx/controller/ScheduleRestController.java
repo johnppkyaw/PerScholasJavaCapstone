@@ -36,6 +36,12 @@ public class ScheduleRestController {
         return ResponseEntity.ok(schedules);
     }
 
+    @Transactional(readOnly = true)
+    @GetMapping("/physicians/{id}/schedules?date={date}")
+    public ResponseEntity<List<Schedule>>  getAllSchedulesByPhysicianAndDate(Long physicianId, @RequestParam("date") String searchDate) {
+        return ResponseEntity.ok(scheduleServices.getAllSchedulesByPhysicianAndDate(physicianId, searchDate));
+    }
+
     @Transactional
     @PostMapping("/schedules")
     public ResponseEntity<Void> createSchedule(@RequestBody Schedule schedule) {

@@ -54,4 +54,8 @@ public class ScheduleServices {
             throw new EntityNotFoundException("Schedule not found with id: " + id);
         }
     }
+
+    public List<Schedule> getAllSchedulesByPhysicianAndDate(Long physicianId, String searchDate) {
+        return scheduleRepository.getAllSchedulesByPhysicianAndDate(physicianId, searchDate);
+    }
 }

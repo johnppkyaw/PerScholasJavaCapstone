@@ -59,11 +59,6 @@ public class PhysicianServices implements PhysicianService {
         Physician physician = physicianRepository.findByUsername(username);
         if(physician != null) {
             return new PhysicianPrincipal(physician, roleService.getRolesByUser(physician.getId()));
-//            return new org.springframework.security.core.userdetails.User(physician.getUsername(),
-//                    physician.getPassword(),
-//                    physician.getRoles().stream()
-//                            .map((role) -> new SimpleGrantedAuthority(role.getName()))physician_sequence
-//                            .collect(Collectors.toList()));
         }else {
             log.warn("Invalid username or password {}", username);
             throw new UsernameNotFoundException("Invalid email or password");

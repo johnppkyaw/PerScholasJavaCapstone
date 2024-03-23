@@ -1,5 +1,6 @@
 package dev.johnkyaw.medmx.controller;
 
+import dev.johnkyaw.medmx.exceptions.PhysicianNotFoundException;
 import dev.johnkyaw.medmx.model.Physician;
 import dev.johnkyaw.medmx.service.PhysicianServices;
 import lombok.extern.slf4j.Slf4j;
@@ -61,7 +62,7 @@ public class PhysicianRestController {
             return ResponseEntity.ok(physician);
         } else {
             log.warn("Physician with id " + id + " not found!");
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new PhysicianNotFoundException(id);
         }
 
     }
