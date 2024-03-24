@@ -97,11 +97,11 @@ public class MainController {
 //                return "redirect:/register?success";
 //            } else {
 //                // Physician already registered
-//                result.rejectValue("username", null, "There is already an account registered with the same email");
+//                result.rejectValue("username", null, "Incorrect physician info");
 //            }
 //        } else {
 //            // Physician not found in the database
-//            result.rejectValue("id", null, "The physician with the provided ID does not exist");
+//            result.rejectValue("id", null, "Incorrect physician info");
 //        }
 //
 //        if (result.hasErrors()) {
