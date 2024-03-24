@@ -39,4 +39,5 @@ public class Note {
     private String visitType;
 
     private String noteContent;
+
 }

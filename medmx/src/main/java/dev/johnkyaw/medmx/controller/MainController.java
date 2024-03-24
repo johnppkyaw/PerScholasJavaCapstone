@@ -169,7 +169,7 @@ public class MainController {
             }
 
         }
-        return "schedule";
+        return "schedule-page";
     }
 
     @GetMapping("/patientDetail/{id}")

@@ -45,7 +45,7 @@ public class SecurityConfiguration {
                                 .requestMatchers( "/", "/css/home.css", "/login*"
                                         ,"/img/*", "/register", "register/save").permitAll()
                                 //these URLs require authentication with any roles
-                                .requestMatchers("/home","/css/*","/js/*","/api/**")
+                                .requestMatchers("/home","/css/*","/js/*","/api/**", "/schedule")
                                 .hasAnyRole("ADMIN","PHYSICIAN").anyRequest().authenticated()
                 )
                 .formLogin(

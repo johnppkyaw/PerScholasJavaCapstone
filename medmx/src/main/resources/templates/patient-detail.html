@@ -47,10 +47,11 @@
 <div id="display-info">
     <div class="display-sections" id="history-section">
         <p><Strong>Name: </Strong><span th:text="${patient.firstName} + ' ' + ${patient.lastName}"></span></p>
-        <p th:text="'Date of Birth (YYYY-MM-DD): ' + ${patient.dateOfBirth}"></p>
-        <p th:text="'Address: ' + ${patient.address}"></p>
-        <p th:text="'Address 2: ' + ${patient.address2}"></p>
-        <p th:text="'Phone: ' + ${patient.phone}"></p>
+        <p><Strong>Gender: </Strong><span th:text="${patient.gender}"></span></p>
+        <p><Strong>Date of birth (YYYY-MM-DD): </Strong><span th:text="${patient.dateOfBirth}"></span></p>
+        <p><Strong>Address: </Strong><span th:text="${patient.address}"></span></p>
+        <p><Strong>Address 2: </Strong><span th:text="${patient.address2}"></span></p>
+        <p><Strong>Phone: </Strong><span th:text="${patient.phone}"></span></p>
     </div>
     <div class="display-sections" id="prescription-section"></div>
     <div class="display-sections" id="clinic-notes-nav-section">
@@ -144,44 +145,34 @@
     //On loading the page, hide notes and prescription, tab
     toggleDisplay(prescriptionSec, false);
     toggleDisplay(noteSec, false);
-    changeBackgroundColor(infoTab, true);
+    setTabActive(infoTab);
 
     //When a tab is clicked, only display that section and hide other tabs.
     infoTab.addEventListener("click", () => {
         toggleDisplay(prescriptionSec, false);
         toggleDisplay(noteSec, false);
         toggleDisplay(historySec, true);
-        changeBackgroundColor(rxTab, false);
-        changeBackgroundColor(notesTab, false);
-        changeBackgroundColor(infoTab, true);
+        setTabActive(infoTab);
     })
     notesTab.addEventListener("click", () => {
         toggleDisplay(prescriptionSec, false);
         toggleDisplay(noteSec, true);
         toggleDisplay(historySec, false);
-        changeBackgroundColor(rxTab, false);
-        changeBackgroundColor(notesTab, true);
-        changeBackgroundColor(infoTab, false);
+        setTabActive(notesTab);
     })
     rxTab.addEventListener("click", () => {
         toggleDisplay(prescriptionSec, true);
         toggleDisplay(noteSec, false);
         toggleDisplay(historySec, false);
-        changeBackgroundColor(rxTab, true);
-        changeBackgroundColor(notesTab, false);
-        changeBackgroundColor(infoTab, false);
+        setTabActive(rxTab);
     })
-    function changeBackgroundColor(element, clicked) {
-        if(clicked === true) {
-            element.style.backgroundColor = "#0d3549";
-        } else {
-            element.style.backgroundColor = "darkslategrey";
+    function setTabActive(tab) {
+        const tabs = document.getElementsByClassName("patient-tabs");
+        for (const tab of tabs) {
+            tab.classList.remove("active");
         }
+        tab.classList.add("active");
     }
-
-
-
-
 
     //Get today's date with timezone adjusted
     Date.prototype.toDateInputValue = (function() {
@@ -263,7 +254,6 @@
             toggleDisplay(editNoteModal, false);
         });
     }
-
 
     //Save the note to database after create note button inside the create note model is clicked.
     createNoteSubmitButton.addEventListener("click", () => {

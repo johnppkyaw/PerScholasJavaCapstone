@@ -169,13 +169,20 @@ table {
   border-top: 5px darkslategrey solid;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-  background-color: darkslategrey;
+  background-color: #1378a6;
   color: gold;
 }
 
-.patient-tabs:hover, .patient-tabs:focus {
+.patient-tabs:hover {
   background-color: #0d3549;
   cursor: pointer;
+}
+
+.patient-tabs.active {
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White font color */
+  font-weight: bold; /* Bold font */
+  border-bottom: 2px solid #007bff; /* Bottom border */
 }
 
 #display-info {
@@ -185,30 +192,29 @@ table {
   border-bottom-right-radius: 25px;
   border-bottom-left-radius: 25px;
   padding: 40px;
-  background-color: darkslategrey;
+  background-color: #1378a6;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 40px;
-  box-shadow: 3px 3px red, -1em 0 .4em olive;
+  box-shadow: 3px 3px #5974b6, -1em 0 .4em #53aab0;
 }
 
 .display-sections {
   width:100%;
   height: 100%;
-  background-color: darkslategrey;
+  background-color: #1378a6;
   box-shadow: #CCCCCC;
+  border-radius: 20px;
 }
 
-#history-section{
+#history-section, #prescription-section{
   background-color: #abdef5;
   border-radius: 20px;
   padding: 20px;
 }
 
-#prescription-section{
-  background-color: #abdef5;
-}
+
 
 #clinic-notes-nav-section {
   display: flex;
