@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,6 +32,12 @@ public class NoteRestController {
     @GetMapping("/patients/{patientId}")
     public ResponseEntity<List<Note>> getAllNotesByPatientId(@PathVariable("patientId") Long patientId) {
         List<Note> notes = noteService.getAllNotesByPatientId(patientId);
+        return new ResponseEntity<>(notes, HttpStatus.OK);
+    }
+    @Transactional
+    @GetMapping("/patients/{patientId}?date={date}")
+    public ResponseEntity<List<Note>> getAllNotesByPatientIdAndDate(@PathVariable("patientId") Long patientId, @RequestParam("date") LocalDate date) {
+        List<Note> notes = noteService.getAllNotesByPatientIdAndDate(patientId, date);
         return new ResponseEntity<>(notes, HttpStatus.OK);
     }
     @Transactional

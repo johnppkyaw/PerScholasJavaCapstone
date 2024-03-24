@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "patient")
+@Table(name = "patient", uniqueConstraints = { @UniqueConstraint(name = "UniqueFirstAndLastAndDOB", columnNames = {"firstName", "lastName", "dateOfBirth"})})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
