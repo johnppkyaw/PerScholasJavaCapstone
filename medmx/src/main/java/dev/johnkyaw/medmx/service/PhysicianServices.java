@@ -87,21 +87,6 @@ public class PhysicianServices implements PhysicianService {
         return physicianRepository.findByUsername(username);
     }
 
-
-//    public void addPhysician(Physician physician) {
-//        try {
-//            Optional<Physician> existingPhysician = physicianRepository.findByFirstNameAndLastNameAndSpecialty(
-//                    physician.getFirstName(), physician.getLastName(), physician.getSpecialty());
-//            if(existingPhysician.isPresent()) {
-//                throw new RuntimeException("The physician with provided info already exists");
-//            } else {
-//                physicianRepository.save(physician);
-//            }
-//        } catch(DataIntegrityViolationException e) {
-//            throw new RuntimeException("Duplicate entry detected: " + e.getMessage());
-//        }
-//    }
-
     public List<Physician> getAllPhysician() {
         return physicianRepository.findAll();
     }
@@ -121,22 +106,7 @@ public class PhysicianServices implements PhysicianService {
             _physician.setClinicAddress(physician.getClinicAddress());
             _physician.setClinicAddress2(physician.getClinicAddress2());
             _physician.setPhone(physician.getPhone());
-//            if(_physician.getPassword().isEmpty()) {
-//                _physician.setPassword(passwordEncoder.encode(physician.getPassword()));
-//                _physician.setUsername(physician.getUsername());
-//
-//                Role role1 = roleRepository.findByName("ROLE_ADMIN");
-//                Role role2 = roleRepository.findByName("ROLE_PHYSICIAN");
-//                if (role1 == null) {
-//                    checkRoleExist("ROLE_ADMIN");
-//                }
-//                if (role2 == null) {
-//                    role2 = checkRoleExist("ROLE_PHYSICIAN");
-//                }
-//
-//                _physician.setRoles(Arrays.asList(role2));
-//
-//            }
+
             // Save the updated physician to the database
             physicianRepository.save(_physician);
         }

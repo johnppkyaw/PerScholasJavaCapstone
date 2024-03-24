@@ -53,12 +53,6 @@ public class MainController {
         return "index";
     }
 
-//    @GetMapping("/home")
-//    public String loginSuccessHomePage() {
-//        log.info("Login Success!");
-//        return "index";
-//    }
-
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         log.info("Loaded registration page");
@@ -80,36 +74,6 @@ public class MainController {
         log.info("Registration successful");
         physicianServices.creat(physicianDTO);
         return "index";
-
-//        System.out.println(physician);
-//        Physician existingPhysician = physicianServices.findByIdAndFirstNameAndLastName(physician.getId(), physician.getFirstName(), physician.getLastName());
-//
-//        // Check if physician exists
-//        if (existingPhysician != null) {
-//            // If physician exists but doesn't have username and password assigned
-//            if (existingPhysician.getUsername() == null || existingPhysician.getUsername().isEmpty() ||
-//                    existingPhysician.getPassword() == null || existingPhysician.getPassword().isEmpty()) {
-//                // Assign username and password from the registration form
-//                existingPhysician.setUsername(physician.getUsername());
-//                existingPhysician.setPassword(physician.getPassword());
-//                // Update the physician in the database
-//                physicianServices.updatePhysician(existingPhysician.getId(), existingPhysician);
-//                return "redirect:/register?success";
-//            } else {
-//                // Physician already registered
-//                result.rejectValue("username", null, "Incorrect physician info");
-//            }
-//        } else {
-//            // Physician not found in the database
-//            result.rejectValue("id", null, "Incorrect physician info");
-//        }
-//
-//        if (result.hasErrors()) {
-//            model.addAttribute("physician", physician);
-//            return "/register";
-//        }
-//
-//        return "redirect:/register?success";
     }
 
     @GetMapping("/login")

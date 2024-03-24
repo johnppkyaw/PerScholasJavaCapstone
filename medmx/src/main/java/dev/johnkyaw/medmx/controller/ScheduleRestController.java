@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@Slf4j
 @RequestMapping("/api")
 public class ScheduleRestController {
     Logger log = LoggerFactory.getLogger(ScheduleRestController.class);

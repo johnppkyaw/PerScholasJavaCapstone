@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@Slf4j
 @RequestMapping("/api")
 public class PhysicianRestController {
     Logger log = LoggerFactory.getLogger(PhysicianRestController.class);
@@ -28,14 +27,6 @@ public class PhysicianRestController {
     public PhysicianRestController(PhysicianServices physicianServices) {
         this.physicianServices = physicianServices;
     }
-
-
-//    @Transactional
-//    @PostMapping("/physicians")
-//    public ResponseEntity<Void> addPhysician(@RequestBody Physician physician) {
-//        physicianServices.addPhysician(physician);
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//    }
 
     @Transactional
     @PostMapping("/physicians/{physicianId}/patients/{patientId}/assign")
@@ -92,7 +83,7 @@ public class PhysicianRestController {
 
     @Transactional
     @DeleteMapping("/physicians/{id}")
-    public ResponseEntity<Void> deletePatient(@PathVariable("id") long id) {
+    public ResponseEntity<Void> deletePhysician(@PathVariable("id") long id) {
         Optional<Physician> physicianData = physicianServices.getPhysicianById(id);
         if (physicianData.isPresent()) {
             physicianServices.deletePhysician(id);
@@ -101,12 +92,6 @@ public class PhysicianRestController {
             log.warn("Attempted editing but the patient not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-    @Transactional
-    @DeleteMapping("/physicians")
-    public ResponseEntity<Void> deleteAllPatient() {
-        physicianServices.deleteAllPhysician();
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
 
