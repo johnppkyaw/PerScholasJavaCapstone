@@ -3,8 +3,10 @@
 ## Features:
 Manages the patient list  
 Manages appointments  
-Manages notes  
-Manages Prescriptions  
+Manages notes
+
+## Model Schema:  
+<img src="../medmx-schema.jpg" alt="schema">  
 
 ## Meets the minimal project requirements: 
 at least 4 models      
@@ -16,14 +18,14 @@ six different view/pages
 ### Home page: 
 Has navs to Patients page and Schedule page
 
-### Patients list - search field
+### Patients list page  
 View all my patients  
 Add, edit, delete patients  
 View patient with specific name  
 View patient with specific patient id
 
-### Schedule page
-View/Schedule patient appointment by date
+### Schedule page  
+View/Schedule patient appointment by date  
 Access patient from appointment  
 
 
@@ -35,7 +37,9 @@ Name, DOB, Address, Phone number
 Access the notes (create, read, edit, delete)
 
 #### Prescription tab: 
-In progress
+Not available  
+
+
 
 
 
