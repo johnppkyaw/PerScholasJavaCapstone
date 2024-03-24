@@ -28,17 +28,14 @@ Access patient from appointment
 
 
 ### Patient page (individual): 
-Gen info: Name, DOB, Address, Phone number
+#### Gen info tab: 
+Name, DOB, Address, Phone number
+
+#### Notes tab:  
+Access the notes (create, read, edit, delete)
+
+#### Prescription tab: 
+In progress
 
 
-    //5 tabs:
-    //
-    //Notes tab
-    //Last appointment?
-    //List of prescription
-    //Vitals
 
-
-Schedule page:
-//Shows all scheduled for a specific date
-//

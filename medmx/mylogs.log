@@ -7199,3 +7199,158 @@ java.io.StreamCorruptedException: invalid type code: 00
 2024-03-23T20:03:15.072-07:00  INFO 6743 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Directing to patient-detail html
 2024-03-23T20:03:48.624-07:00  INFO 6743 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
 2024-03-23T20:03:48.636-07:00  INFO 6743 --- [http-nio-8080-exec-3] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-23T21:20:43.036-07:00  INFO 8370 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 8370 (/Users/johnppkyaw/Desktop/PSCapstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PSCapstone/medmx)
+2024-03-23T21:20:43.037-07:00  INFO 8370 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-23T21:20:43.057-07:00  INFO 8370 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-23T21:20:43.057-07:00  INFO 8370 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-23T21:20:43.515-07:00  INFO 8370 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-23T21:20:43.544-07:00  INFO 8370 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 5 JPA repository interfaces.
+2024-03-23T21:20:43.927-07:00  INFO 8370 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-23T21:20:43.934-07:00  INFO 8370 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-23T21:20:43.934-07:00  INFO 8370 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-23T21:20:43.952-07:00  INFO 8370 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-23T21:20:43.953-07:00  INFO 8370 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 896 ms
+2024-03-23T21:20:44.103-07:00  INFO 8370 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-23T21:20:44.126-07:00  INFO 8370 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-23T21:20:44.141-07:00  INFO 8370 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-23T21:20:44.239-07:00  INFO 8370 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-23T21:20:44.254-07:00  INFO 8370 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-23T21:20:44.410-07:00  INFO 8370 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@717401a
+2024-03-23T21:20:44.410-07:00  INFO 8370 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-23T21:20:44.440-07:00  WARN 8370 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-23T21:20:44.900-07:00  INFO 8370 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-23T21:20:44.982-07:00  INFO 8370 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-23T21:20:45.170-07:00  INFO 8370 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-23T21:20:45.460-07:00  INFO 8370 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
+2024-03-23T21:20:45.528-07:00  WARN 8370 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-23T21:20:45.598-07:00  INFO 8370 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-23T21:20:45.783-07:00  INFO 8370 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-23T21:20:45.822-07:00  INFO 8370 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1928cd65, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@320d6d1e, org.springframework.security.web.context.SecurityContextHolderFilter@578def7b, org.springframework.security.web.header.HeaderWriterFilter@6ed8f7a3, org.springframework.web.filter.CorsFilter@75388c8a, org.springframework.security.web.authentication.logout.LogoutFilter@140ee677, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@45cd54e5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@681043d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2e56616, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3578810c, org.springframework.security.web.access.ExceptionTranslationFilter@65dcd102, org.springframework.security.web.access.intercept.AuthorizationFilter@4fbbcf6c]
+2024-03-23T21:20:46.046-07:00  WARN 8370 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-03-23T21:20:46.078-07:00  WARN 8370 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-03-23T21:20:46.081-07:00  INFO 8370 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-23T21:20:46.083-07:00  INFO 8370 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-23T21:20:46.087-07:00  INFO 8370 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-23T21:20:46.096-07:00  INFO 8370 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-03-23T21:20:46.106-07:00 ERROR 8370 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-03-23T21:23:45.394-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 1201 (/Users/johnppkyaw/Desktop/PSCapstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PSCapstone/medmx)
+2024-03-23T21:23:45.396-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-23T21:23:45.419-07:00  INFO 1201 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-23T21:23:45.419-07:00  INFO 1201 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-23T21:23:46.064-07:00  INFO 1201 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-23T21:23:46.099-07:00  INFO 1201 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 5 JPA repository interfaces.
+2024-03-23T21:23:46.973-07:00  INFO 1201 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-23T21:23:46.980-07:00  INFO 1201 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-23T21:23:46.980-07:00  INFO 1201 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-23T21:23:47.006-07:00  INFO 1201 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-23T21:23:47.006-07:00  INFO 1201 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1586 ms
+2024-03-23T21:23:47.229-07:00  INFO 1201 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-23T21:23:47.267-07:00  INFO 1201 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-23T21:23:47.285-07:00  INFO 1201 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-23T21:23:47.403-07:00  INFO 1201 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-23T21:23:47.416-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-23T21:23:47.670-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@265cb61e
+2024-03-23T21:23:47.671-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-23T21:23:47.710-07:00  WARN 1201 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-23T21:23:48.288-07:00  INFO 1201 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-23T21:23:48.377-07:00  INFO 1201 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-23T21:23:48.568-07:00  INFO 1201 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-23T21:23:48.862-07:00  INFO 1201 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
+2024-03-23T21:23:48.932-07:00  WARN 1201 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-23T21:23:48.996-07:00  INFO 1201 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-23T21:23:49.186-07:00  INFO 1201 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-23T21:23:49.231-07:00  INFO 1201 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@176fa453, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@611e947b, org.springframework.security.web.context.SecurityContextHolderFilter@cbeef8d, org.springframework.security.web.header.HeaderWriterFilter@60d3b470, org.springframework.web.filter.CorsFilter@7aa5da75, org.springframework.security.web.authentication.logout.LogoutFilter@29b52861, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@29c4ca2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@546facf9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1af6890d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4caeba3c, org.springframework.security.web.access.ExceptionTranslationFilter@566ebc3b, org.springframework.security.web.access.intercept.AuthorizationFilter@16cc84f7]
+2024-03-23T21:23:49.464-07:00  INFO 1201 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-23T21:23:49.499-07:00  INFO 1201 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-23T21:23:49.509-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 4.313 seconds (process running for 4.778)
+2024-03-23T21:23:49.923-07:00  INFO 1201 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-23T21:23:49.924-07:00  INFO 1201 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-23T21:23:49.925-07:00  INFO 1201 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-23T21:25:23.737-07:00  INFO 1201 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 47 class path changes (0 additions, 0 deletions, 47 modifications)
+2024-03-23T21:25:23.751-07:00  INFO 1201 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-23T21:25:23.754-07:00  INFO 1201 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-23T21:25:23.767-07:00  INFO 1201 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-23T21:25:23.861-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 1201 (/Users/johnppkyaw/Desktop/PSCapstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PSCapstone/medmx)
+2024-03-23T21:25:23.861-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-23T21:25:23.997-07:00  INFO 1201 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-23T21:25:24.005-07:00  INFO 1201 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 5 JPA repository interfaces.
+2024-03-23T21:25:24.103-07:00  INFO 1201 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-23T21:25:24.104-07:00  INFO 1201 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-23T21:25:24.104-07:00  INFO 1201 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-23T21:25:24.110-07:00  INFO 1201 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-23T21:25:24.110-07:00  INFO 1201 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 248 ms
+2024-03-23T21:25:24.168-07:00  INFO 1201 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-23T21:25:24.169-07:00  INFO 1201 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-23T21:25:24.170-07:00  INFO 1201 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-23T21:25:24.171-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-03-23T21:25:24.191-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@56f839c5
+2024-03-23T21:25:24.191-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-03-23T21:25:24.192-07:00  WARN 1201 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-23T21:25:24.267-07:00  INFO 1201 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-23T21:25:24.331-07:00  INFO 1201 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-23T21:25:24.443-07:00  INFO 1201 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
+2024-03-23T21:25:24.480-07:00  WARN 1201 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-23T21:25:24.503-07:00  INFO 1201 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-23T21:25:24.611-07:00  INFO 1201 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-23T21:25:24.632-07:00  INFO 1201 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7762f450, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6631640d, org.springframework.security.web.context.SecurityContextHolderFilter@2b479927, org.springframework.security.web.header.HeaderWriterFilter@389fcc6f, org.springframework.web.filter.CorsFilter@62859270, org.springframework.security.web.authentication.logout.LogoutFilter@7196022a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@783ddf59, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34337626, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a0794ad, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7e602e92, org.springframework.security.web.access.ExceptionTranslationFilter@1df9c44c, org.springframework.security.web.access.intercept.AuthorizationFilter@1c553975]
+2024-03-23T21:25:24.749-07:00  INFO 1201 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-23T21:25:24.761-07:00  INFO 1201 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-23T21:25:24.766-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 0.921 seconds (process running for 100.037)
+2024-03-23T21:25:24.767-07:00  INFO 1201 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-03-23T21:25:29.938-07:00  INFO 1201 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-23T21:25:29.938-07:00  INFO 1201 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-23T21:25:29.939-07:00  INFO 1201 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-23T21:25:29.981-07:00  INFO 1201 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-23T21:25:30.238-07:00  INFO 1201 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Login page displayed
+2024-03-23T21:27:26.175-07:00  INFO 1201 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : Loading home page
+2024-03-23T21:27:26.194-07:00  INFO 1201 --- [http-nio-8080-exec-2] d.j.medmx.controller.MainController      : A physician is logged in
+2024-03-23T21:32:23.835-07:00  INFO 1201 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 47 class path changes (0 additions, 0 deletions, 47 modifications)
+2024-03-23T21:32:23.839-07:00  INFO 1201 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-23T21:32:23.840-07:00  INFO 1201 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-03-23T21:32:23.844-07:00  INFO 1201 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-03-23T21:32:23.904-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Starting MedmxApplication using Java 21.0.1 with PID 1201 (/Users/johnppkyaw/Desktop/PSCapstone/medmx/target/classes started by johnppkyaw in /Users/johnppkyaw/Desktop/PSCapstone/medmx)
+2024-03-23T21:32:23.904-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-23T21:32:24.033-07:00  INFO 1201 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-23T21:32:24.044-07:00  INFO 1201 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 5 JPA repository interfaces.
+2024-03-23T21:32:24.176-07:00  INFO 1201 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-23T21:32:24.177-07:00  INFO 1201 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-23T21:32:24.177-07:00  INFO 1201 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-23T21:32:24.182-07:00  INFO 1201 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-23T21:32:24.182-07:00  INFO 1201 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 277 ms
+2024-03-23T21:32:24.224-07:00  WARN 1201 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Cannot deserialize session attribute [SPRING_SECURITY_CONTEXT] for session [939A61709BBEE8A23D1FE8DAAAE4B039]
+2024-03-23T21:32:24.251-07:00  INFO 1201 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-23T21:32:24.252-07:00  INFO 1201 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-23T21:32:24.254-07:00  INFO 1201 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-23T21:32:24.255-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-03-23T21:32:24.274-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f6c81b4
+2024-03-23T21:32:24.274-07:00  INFO 1201 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-03-23T21:32:24.275-07:00  WARN 1201 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-23T21:32:24.344-07:00  INFO 1201 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-23T21:32:24.407-07:00  INFO 1201 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-23T21:32:24.526-07:00  INFO 1201 --- [restartedMain] d.j.medmx.controller.MainController      : injected physicianServices and patientServices to main controller
+2024-03-23T21:32:24.574-07:00  WARN 1201 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-23T21:32:24.601-07:00  INFO 1201 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-23T21:32:24.724-07:00  INFO 1201 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-23T21:32:24.746-07:00  INFO 1201 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@20cc4aa1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2183002d, org.springframework.security.web.context.SecurityContextHolderFilter@2b55925b, org.springframework.security.web.header.HeaderWriterFilter@4890aa6d, org.springframework.web.filter.CorsFilter@59837a63, org.springframework.security.web.authentication.logout.LogoutFilter@3e832a5f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5fc03751, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3be38ce0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@a356847, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@59d25fe3, org.springframework.security.web.access.ExceptionTranslationFilter@3cf24f4f, org.springframework.security.web.access.intercept.AuthorizationFilter@12b7e9fe]
+2024-03-23T21:32:24.876-07:00  INFO 1201 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-23T21:32:24.889-07:00  INFO 1201 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-23T21:32:24.894-07:00  INFO 1201 --- [restartedMain] dev.johnkyaw.medmx.MedmxApplication      : Started MedmxApplication in 0.999 seconds (process running for 520.168)
+2024-03-23T21:32:24.895-07:00  INFO 1201 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-03-23T22:15:03.391-07:00  INFO 1201 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-23T22:15:03.393-07:00  INFO 1201 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-03-23T22:15:03.400-07:00  INFO 1201 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.

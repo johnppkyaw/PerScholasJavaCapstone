@@ -22,11 +22,28 @@ li:hover {
     background-color: darkgray;
 }
 
+.hero-section {
+    background-color: #00214a; /* Adjust background color */
+    padding: 50px 0;
+    text-align: center;
+}
+
+.subheadline {
+    font-size: 24px;
+    color: #82cfdf; /* Adjust text color */
+}
+
 h1 {
     text-align: center;
     margin: 60px 0px;
     color: #abdef5;
     font-size: 64px;
+    padding: 0px 20px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #cad567; /* Adjust text color */
 }
 
 #mainpic {
@@ -50,17 +67,6 @@ body {
     margin: 0 auto;
 }
 
-.hero-section {
-    background-color: #f0f0f0; /* Adjust background color */
-    padding: 50px 0;
-    text-align: center;
-}
-
-.subheadline {
-    font-size: 24px;
-    color: #333; /* Adjust text color */
-}
-
 .unique-selling-proposition {
     background-color: #e0e0e0; /* Adjust background color */
     padding: 50px 0;
@@ -73,10 +79,7 @@ body {
     text-align: center;
 }
 
-.benefits h2 {
-    font-size: 28px;
-    color: #333; /* Adjust text color */
-}
+
 
 .benefits ul {
     list-style: none;
@@ -146,23 +149,27 @@ body {
 }
 
 .social-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     list-style: none;
     padding: 0;
     margin-top: 20px;
+    gap: 10px;
 }
 
-.social-link {
-    display: inline-block;
+.social-link-li {
+    display: block;
     background-color: #007bff; /* Adjust button color */
     color: #fff; /* Adjust text color */
     text-decoration: none;
     font-size: 20px;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-right: 10px;
     transition: background-color 0.3s ease;
 }
 
-.social-link:hover {
+.social-link-li:hover {
     background-color: #0056b3; /* Adjust hover color */
+    border-radius: 5px;
 }
