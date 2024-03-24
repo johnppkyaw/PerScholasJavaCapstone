@@ -14,7 +14,7 @@ Manages notes
 #### 7 html templates
 
 ## Model Schema:
-<img src="../medmx-schema.jpg" alt="schema" width="400px">
+<img src="medmx-schema.jpg" alt="schema" width="400px">
 
 ## Model Relationship:
 ### Unidirectional (<> Many-to-Many; < One-to-Many)
