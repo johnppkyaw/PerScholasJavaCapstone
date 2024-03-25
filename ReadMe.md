@@ -6,7 +6,7 @@ Manages appointments
 Manages notes
 
 ## Tools
-#### Front-End: HTML/CSS/Javascript (DOM manipulation, fetch)
+#### Front-End: HTML, CSS, Bootstrap, Javascript (DOM manipulation, fetch)
 #### Back-End: Java (JDK 17), Springboot (3.2.3), Thymeleaf
 #### Dependencies from spring initializr: Spring Web, Lombok, Spring Boot DevTools, Spring Data JPA, MySQL Driver, Spring Security, Thymeleaf
 #### Database: MySQL
@@ -33,7 +33,7 @@ Manages notes
 `GET /api/patients/{id}`: Get the patient by id  
 `GET /api/patients`: Get all patients  
 `GET /api/physicians/{id}/patients`: Get all patients of a specific physician  
-`POST /api/patients` : Add a patient to database
+`POST /api/patients` : Add a patient to database  
 `PUT /api/patients/{id}`: Edit specific patient  
 `DELETE /api/patients/{id}`: Delete specific patient  
 `GET /api/physicians/{id}/schedules`: All schedules for specific physician  

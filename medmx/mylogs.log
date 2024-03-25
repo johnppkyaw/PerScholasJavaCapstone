@@ -37,3 +37,7 @@
 2024-03-25T09:14:57.829-07:00  INFO 28649 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Login page displayed
 2024-03-25T09:16:03.911-07:00  INFO 28649 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Patient is present adding to model attribute
 2024-03-25T09:16:03.928-07:00  INFO 28649 --- [http-nio-8080-exec-5] d.j.medmx.controller.MainController      : Directing to patient-detail html
+2024-03-25T09:28:21.014-07:00  INFO 28649 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : Loading home page
+2024-03-25T09:28:21.034-07:00  INFO 28649 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : A physician is logged in
+2024-03-25T11:34:41.637-07:00  INFO 28649 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Loading home page
+2024-03-25T11:34:41.656-07:00  INFO 28649 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : A physician is logged in
