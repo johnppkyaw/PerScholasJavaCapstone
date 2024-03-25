@@ -1,5 +1,5 @@
 body {
-    height: 250vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background: linear-gradient(177deg, rgba(20, 17, 61, 1) 0%, rgb(130, 156, 238) 47%, rgba(137, 145, 176, 1) 100%);
@@ -93,19 +93,30 @@ body {
     text-align: center;
 }
 
-.benefits ul {
-    list-style: none;
-    padding: 0;
+.benefits > div > img {
+    object-fit: cover;
 }
 
-.benefits li {
+.benefits > div {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-top: 40px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
+
+.benefits > div > div {
+    width: 33%;
+}
+
+
 
 .social-proof {
     background-color: #88b7e8; /* Adjust background color */
-    padding: 50px 0;
+    padding: 70px 0;
     text-align: center;
 }
 
@@ -126,7 +137,7 @@ body {
 
 .cta-section {
     background-color: #f0f0f0; /* Adjust background color */
-    padding: 50px 0;
+    padding: 70px 0;
     text-align: center;
 }
 
@@ -149,7 +160,7 @@ body {
 .footer {
     background-color: #333; /* Adjust background color */
     color: #fff; /* Adjust text color */
-    padding: 50px 0;
+    padding: 70px 0;
     text-align: center;
 }
 
