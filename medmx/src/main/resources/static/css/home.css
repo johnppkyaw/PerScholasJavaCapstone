@@ -23,32 +23,32 @@ li:hover {
 }
 
 .hero-section {
-    background-color: #00214a; /* Adjust background color */
+    background-color: #435074; /* Adjust background color */
     padding: 50px 0;
     text-align: center;
 }
 
 .subheadline {
     font-size: 24px;
-    color: #82cfdf; /* Adjust text color */
+    color: #ffffff; /* Adjust text color */
 }
 
 h1 {
     text-align: center;
     margin: 60px 0px;
-    color: #abdef5;
+    color: #ffffff;
     font-size: 64px;
     padding: 0px 20px;
 }
 
 h2 {
     font-size: 28px;
-    color: #cad567; /* Adjust text color */
+    color: #ffffff; /* Adjust text color */
 }
 
 #mainpic {
     width: 100%;
-    height: 500px;
+    height: 600px;
     object-fit: cover;
 }
 
@@ -68,18 +68,30 @@ body {
 }
 
 .unique-selling-proposition {
-    background-color: #e0e0e0; /* Adjust background color */
+    background-color: #92a8d1; /* Adjust background color */
     padding: 50px 0;
     text-align: center;
+    color:#f0f0f0;
+    font-size: 26px;
+}
+.unique-selling-proposition div {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 0px 20px;
+}
+.unique-selling-proposition div p {
+    width: 33%;
 }
 
 .benefits {
-    background-color: #f0f0f0; /* Adjust background color */
+    background-color: #6b86b6; /* Adjust background color */
     padding: 50px 0;
     text-align: center;
 }
-
-
 
 .benefits ul {
     list-style: none;
@@ -92,7 +104,7 @@ body {
 }
 
 .social-proof {
-    background-color: #e0e0e0; /* Adjust background color */
+    background-color: #88b7e8; /* Adjust background color */
     padding: 50px 0;
     text-align: center;
 }
@@ -120,12 +132,13 @@ body {
 
 .cta-button {
     display: inline-block;
-    background-color: #007bff; /* Adjust button color */
+    background-color: #000000; /* Adjust button color */
     color: #fff; /* Adjust text color */
     text-decoration: none;
     font-size: 24px;
-    padding: 15px 40px;
+    padding: 10px 20px;
     border-radius: 5px;
+    margin-bottom: 20px;
     transition: background-color 0.3s ease;
 }
 
@@ -141,7 +154,7 @@ body {
 }
 
 .footer p, .footer ul {
-    margin: 0;
+    margin: 10px;
 }
 
 .footer address {
@@ -156,6 +169,7 @@ body {
     padding: 0;
     margin-top: 20px;
     gap: 10px;
+    margin-bottom: 30px;
 }
 
 .social-link-li {

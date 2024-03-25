@@ -18,13 +18,21 @@ reloadSchedule();
 //Function to create a schedule HTML element
 function createScheduleElement(schedule) {
     const eachScheduleDiv = document.createElement('div');
-    eachScheduleDiv.setAttribute("class", "each-schedule");
     const timeDiv = document.createElement('div');
     const idDiv = document.createElement('div');
     const nameDiv = document.createElement('div');
     const phoneDiv = document.createElement('div');
     const statusDiv = document.createElement('div');
     const noteDiv = document.createElement('div');
+
+    eachScheduleDiv.setAttribute("class", "each-schedule");
+
+    nameDiv.setAttribute("class", "patient-"+schedule.patient.id);
+    nameDiv.style.color = "blue";
+    nameDiv.addEventListener("mouseover", function(event) {
+        event.target.style.cursor = "pointer";
+    })
+    nameDiv.addEventListener("click", loadPatientPage);
 
     //edit button
     const editButton = document.createElement('button');
@@ -75,6 +83,16 @@ function reloadSchedule() {
             })
         }).catch(error => console.error('Error fetching schedule data:', error));
 }
+function loadPatientPage(e) {
+    const patientId = parseInt(e.target.className.split("-")[1]);
+    console.log(window.location.href);
+    const currentURL = window.location.href.split("/");
+    const newURL = [currentURL[0], currentURL[1], currentURL[2], "patientDetail/" + patientId].join("/");
+    window.location.replace(newURL);
+    console.log(newURL);
+}
+
+
 // Function to show or hide a modal
 function toggleModal(modalDiv, show) {
     modalDiv.style.display = show ? 'block' : 'none';
