@@ -41,3 +41,5 @@
 2024-03-25T09:28:21.034-07:00  INFO 28649 --- [http-nio-8080-exec-1] d.j.medmx.controller.MainController      : A physician is logged in
 2024-03-25T11:34:41.637-07:00  INFO 28649 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : Loading home page
 2024-03-25T11:34:41.656-07:00  INFO 28649 --- [http-nio-8080-exec-9] d.j.medmx.controller.MainController      : A physician is logged in
+2024-03-25T11:40:50.493-07:00  INFO 28649 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : Loading home page
+2024-03-25T11:40:50.509-07:00  INFO 28649 --- [http-nio-8080-exec-6] d.j.medmx.controller.MainController      : A physician is logged in
