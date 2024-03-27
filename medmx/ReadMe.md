@@ -1,9 +1,9 @@
 # MedMX: Patient Management System
 
-## Features:
-Manages the patient list
-Manages appointments
-Manages notes
+## Features (so far):
+Manages the patient list  
+Manages appointments  
+Manages notes  
 
 ## Tools
 #### Front-End: HTML/CSS/Javascript (DOM manipulation, fetch)
