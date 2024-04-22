@@ -187,7 +187,7 @@ function editSchedule(event, id) {
         patientOption.selected = true;
     }
 
-    let patient = {};
+    let patient = patients.find(patient => patient.id === parseInt(patientField.value));
 
     // Event listener to update selected patient
     patientField.addEventListener("change", () => {
